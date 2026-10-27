@@ -3,15 +3,22 @@
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "cs", "csharp", "rust", "css", "json", "jsonc", "fs", "fsharp" },
 	callback = function()
-		local width               = 4
+		local width               = 8
 		vim.opt_local.shiftwidth  = width
 		vim.opt_local.tabstop     = width
 		vim.opt_local.softtabstop = width
-		vim.opt_local.expandtab   = true
-		vim.opt_local.textwidth   = 80
+		vim.opt_local.expandtab   = false
+		vim.opt_local.textwidth   = 120
 	end,
 })
 
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "latex", "tex" },
+	callback = function()
+		vim.opt_local.textwidth = 0
+	end,
+})
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "haskell", "hs", "ocaml" },
@@ -82,6 +89,8 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.sidescrolloff = 0
 
 		vim.opt_local.wrap          = false
+
+		vim.opt_local.colorcolumn   = { "72", "80", "88" }
 
 		local width                 = 8
 		vim.opt_local.shiftwidth    = width
@@ -166,6 +175,11 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "python" },
 	callback = function()
+		local width               = 8
+		vim.opt_local.shiftwidth  = width
+		vim.opt_local.tabstop     = width
+		vim.opt_local.softtabstop = width
+		vim.opt_local.expandtab   = false
 		vim.keymap.set("n", "<leader>h", ":w<CR>:!python3 %<CR>", { buffer = true, desc = "Run Python file" })
 	end
 })

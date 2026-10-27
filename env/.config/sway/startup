@@ -4,7 +4,7 @@
 # pipewire &
 # wireplumber &
 # pipewire-pulse &
-mpd --no-daemon &
+mpd --no-daemon ~/.config/mpd.conf &
 
 blueman-applet &
 ckb-next-daemon &
@@ -21,7 +21,7 @@ dbus-update-activation-environment --systemd --all &
 dbus-update-activation-environment --all &
 # gnome-keyring-daemon --start --components=secrets &
 
-wlsunset -S 9:00 -s 21:00 &
+wlsunset -S 8:00 -s 23:00 &
 
 # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
@@ -30,7 +30,9 @@ swayidle -w \
   timeout 3600 'swaymsg "output * dpms off"' \
   resume 'swaymsg "output * dpms on"' &
 
-./arrstack.sh &
+# ./arrstack.sh &
 
 
 
+kwalletd6 &
+protonmail-bridge &

@@ -1,14 +1,14 @@
 ---@diagnostic disable: undefined-global
 
 vim.pack.add {
-	{ src = "https://github.com/neovim-treesitter/nvim-treesitter" },
-	{ src = "https://github.com/neovim-treesitter/treesitter-parser-registry" },
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter" },
 	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	{ src = "https://github.com/nvim-mini/mini.nvim" },
 	{ src = "https://github.com/lewis6991/gitsigns.nvim" },
 	{ src = "https://github.com/folke/which-key.nvim" },
 	{ src = "https://github.com/tpope/vim-fugitive" },
 	{ src = "https://github.com/junegunn/fzf",                                 lazy = false, },
+	{ src = "https://github.com/ibhagwan/fzf-lua",                             lazy = false, },
 	{ src = "https://github.com/junegunn/fzf.vim",                             lazy = false },
 	{ src = "https://github.com/L3MON4D3/LuaSnip" },
 	{ src = "https://github.com/stevearc/oil.nvim" },
@@ -19,12 +19,11 @@ vim.pack.add {
 	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	{ src = "https://github.com/ionide/Ionide-vim" },
 	{ src = "https://github.com/vimwiki/vimwiki" },
-	{ src = "https://github.com/sevenc-nanashi/neov-ime.nvim" },
 	{ src = "https://github.com/MunifTanjim/nui.nvim" },
 	{ src = "https://github.com/ray-x/lsp_signature.nvim" },
 	{ src = "https://github.com/HakonHarnes/img-clip.nvim" },
 	{ src = "https://github.com/nvim-mini/mini.trailspace" },
-	{ src = "https://github.com/romus204/tree-sitter-manager.nvim" },
+	-- { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
 	{ src = "https://github.com/folke/zen-mode.nvim" },
 	{ src = "https://github.com/nvim-mini/mini.extra" },
 }
@@ -268,19 +267,18 @@ require("img-clip").setup {
 
 require('mini.trailspace').setup()
 
-require("tree-sitter-manager").setup()
+-- require("tree-sitter-manager").setup()
 
 require "zen-mode".setup {
-  window = {
-    backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
-    -- height and width can be:
-    -- * an absolute number of cells when > 1
-    -- * a percentage of the width / height of the editor when <= 1
-    -- * a function that returns the width or the height
-    width = 80, -- width of the Zen window
-    height = 1, -- height of the Zen window
-  },
+	window = {
+		backdrop = 1, -- shade the backdrop of the Zen window. Set to 1 to keep the same as Normal
+		-- height and width can be:
+		-- * an absolute number of cells when > 1
+		-- * a percentage of the width / height of the editor when <= 1
+		-- * a function that returns the width or the height
+		width = 80, -- width of the Zen window
+		height = 1, -- height of the Zen window
+	},
 }
 
 require('mini.extra').setup()
-

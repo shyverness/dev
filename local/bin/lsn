@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+less -N -X "$@"

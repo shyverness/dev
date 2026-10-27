@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]; then
+  file=$(fzf) || exit
+else
+  file=$(fd . "$1" | fzf) || exit
+fi
+
+[ -n "$file" ] && ed "$file"
+

@@ -63,7 +63,7 @@ vim.opt.cursorline = true
 vim.opt.colorcolumn = { "72", "80", "120", "180" }
 vim.opt.textwidth = 72
 
-vim.opt.list = false
+vim.opt.list = true
 vim.opt.listchars = {
 	tab = "> ",
 	trail = "*",
@@ -77,7 +77,7 @@ vim.cmd([[highlight default Nbsp guibg=#666666 guifg=#ffffff]])
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.opt.spell = true
+vim.opt.spell = false
 vim.opt.spelllang = { "en", "fr", "cjk" }
 
 _G.isWriteCommit = false
@@ -130,7 +130,6 @@ vim.api.nvim_create_user_command("UWU", function(opts)
 end, { range = true })
 
 if vim.g.neovide then
-	require('neov-ime').setup()
 	vim.o.guifont = "courier prime:h18"
 
 	vim.g.neovide_refresh_rate = 144

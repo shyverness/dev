@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name[hu]=Zathura
+Name=Zathura
+Exec=env GSK_RENDERER=cairo zathura %U
+Icon=org.pwmt.zathura
+Terminal=false
+Categories=Office;Viewer;

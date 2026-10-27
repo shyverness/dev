@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+dir=$(fd --type d --hidden --exclude .git . "${1:-.}" | fzf) || exit
+[[ -n "$dir" ]] || exit
+
+session=$(tmux new-session -dP -F '#{session_id}' -c "$dir") || exit
+tmux switch-client -t "$session"

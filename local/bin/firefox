@@ -1,0 +1,5 @@
+systemd-run --user --scope \
+	-p MemoryHigh=2G \
+	-p MemoryMax=2.5G \
+	-p MemorySwapMax=2G \
+	firefox

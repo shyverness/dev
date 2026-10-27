@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+date '+%Y-%m-%d %H:%M:%S' | wl-copy
+sleep 0.1
+ydotool key 29:1 47:1 47:0 29:0
+
+

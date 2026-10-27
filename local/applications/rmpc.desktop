@@ -1,0 +1,18 @@
+[Desktop Entry]
+Categories=AudioVideo;Audio;Player;Music;ConsoleOnly
+Comment=A modern, configurable, terminal based MPD Client with album art support
+Exec=rmpc
+GenericName=Rusty Music Player Client
+Keywords=Music;Audio;Player
+Name=rmpc
+NoDisplay=false
+Path=
+PrefersNonDefaultGPU=false
+StartupNotify=true
+Terminal=true
+TerminalOptions=
+TryExec=rmpc
+Type=Application
+X-Desktop-File-Install-Version=0.28
+X-KDE-SubstituteUID=false
+X-KDE-Username=

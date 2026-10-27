@@ -1,46 +1,5 @@
-vpn-gentoowire-nj-150() {
-case "$1" in
-"u"|"up")
-	doas install -m 600 Desktop/GentooWire-US-NJ-150.conf /etc/wireguard/protonvpn.conf
-	doas modprobe wireguard
-	doas wg-quick up /etc/wireguard/protonvpn.conf
-	;;
-"d"|"down")
-	doas wg-quick down /etc/wireguard/protonvpn.conf
-	doas modprobe -r wireguard
-	;;
-esac
-}
-
-
-world() {
-	local stamp="${XDG_CACHE_HOME:-$HOME/.cache}/world-sync"
-	local now last_run
-
-	now=$(date +%s)
-
-	mkdir -p "$(dirname "$stamp")"
-
-	if [ -f "$stamp" ]; then
-		last_run=$(cat "$stamp")
-	else
-		last_run=0
-	fi
-
-	if [ "$last_run" -gt 0 ] && [ $((now - last_run)) -lt 86400 ]; then
-		printf 'Already synced within the last 24 hours.\n'
-	else
-		doas emerge --sync || return
-		printf '%s\n' "$now" > "$stamp"
-	fi
-
-	doas emerge -avuDN @world &&
-	doas emerge --depclean
-}
-
-
-alias vi="vim"
 alias rs="nvim"
+alias mutt="neomutt"
 
 alias ff="fastfetch"
 
@@ -48,17 +7,16 @@ alias calendar="cal -n 3"
 
 alias ls="eza --no-quotes -s type -a"
 
-# alias t="tmux-goway"
+alias tg="tmux-goway"
 alias t="tmux"
 alias ta="tmux a"
 
-alias e="exit"
 alias q="exit"
 alias wq="exit"
-alias r="yazi"
 alias ..="cd .."
 alias rel="omz reload"
 
+alias gnp="git --no-pager"
 alias g="git"
 alias gs="git status"
 alias ga="git add ."
@@ -73,35 +31,50 @@ alias gl="git log --graph --stat"
 alias glp="git log --graph --stat -p"
 alias glw="git log --oneline --graph --decorate --all"
 
-alias maple="~/maple2022/bin/xmaple"
+alias rg="rg -i"
 
-yt-mpv() {
-  local tmp_dir=$(mktemp -d)
-  ~/Desktop/repos/yt-dlp/yt-dlp.sh -f "bv[height>=720]+ba" -o "$tmp_dir/video.%(ext)s" "$1"
-  mpv "$tmp_dir/video".*
-  rm -rf "$tmp_dir"
+alias maple="~/maple2022/bin/xmaple"
+alias py="python"
+
+e() {
+	if (( $# != 0 )); then
+		>&2 echo "Illegal number of parameters"
+	else
+		exit
+	fi
 }
+
+# ed ()
+# {
+# 	command rlwrap -n -H "$HOME/.ed_history" ed "$@" -E
+# }
 
 yt-extract-audio() {
-  ~/repos/yt-dlp/yt-dlp.sh "$1" -x --audio-format mp3
-}
-
-psk() {
-  for str in "$@"; do
-    printf "%-15s %.2f GB\n" "$str" "$(ps -o rss= -p $(pgrep $str) | awk '{s+=$1} END {print s / (1024*1024)}')"
-  done
+	~/Desktop/repos/yt-dlp/yt-dlp.sh "$1" -x --audio-format mp3
 }
 
 open() {
-  xdg-open $1 >/dev/null 2>&1 &
-  disown
+	xdg-open $1 >/dev/null 2>&1 &
+	disown
 }
 
-range() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-  yazi "$@" --cwd-file="$tmp"
+rc() {
+	local tmp="$(mktemp -t "ranger-cwd.XXXXXX")" cwd
+	ranger --choosedir="$tmp" "$@"
 
-  IFS= read -r -d '' cwd <"$tmp"
-  [ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd -- "$cwd"
-  rm -f -- "$tmp"
+	IFS= read -r cwd <"$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
+eday() {
+	export LANG=fr_CA.UTF-8
+	currentDay="$HOME/Desktop/notes/edit/j/$(date +%Y.%m.%d).txt"
+	if [ -e "$currentDay" ]; then
+		echo "File [$currentDay] exists"
+	else
+		touch "$currentDay"
+		echo "$(date +%Y.%m.%d)" > "$currentDay"
+	fi
+	ed "$currentDay"
 }

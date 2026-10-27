@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+dir=$(fd --type d --hidden --exclude .git . "${1:-.}")
+dir=$(printf '%s\n' "$dir" | fzf)
+tmux new-session -c "$dir"

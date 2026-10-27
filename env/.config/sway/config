@@ -1,8 +1,11 @@
 set $mod Mod4
 floating_modifier $mod
 
-output eDP-1    res 2560x1600@60Hz  pos -1600 0 scale 1.6 allow_tearing yes
+output eDP-1    res 2560x1600@60Hz  pos 1920  0 scale 1.6 allow_tearing yes
 output HDMI-A-1 res 1920x1080@120Hz pos 0     0 scale 1   allow_tearing yes
+
+# output eDP-1    res 2560x1600@60Hz  pos -1600 0 scale 1.6 allow_tearing yes
+# output DP-2     res 1920x1080@120Hz pos 0     0 scale 1   allow_tearing yes
 
 font pango:Comic Code 12
 
@@ -28,9 +31,11 @@ input type:keyboard {
 input type:touchpad {
 	natural_scroll enabled
 	dwt enabled
+	middle_emulation enabled
+	tap enabled
 }
 
-bindsym $mod+Shift+semicolon input type:touchpad events toggle enabled disabled
+# bindsym $mod+Shift+semicolon input type:touchpad events toggle enabled disabled
 
 seat * {
 	hide_cursor 15000
@@ -38,16 +43,16 @@ seat * {
 
 default_border pixel none
 smart_gaps off
-gaps inner 10
+gaps inner 5
 gaps outer 5
-hide_edge_borders --i3 none
+# hide_edge_borders --i3 none
 default_dim_inactive 0.12
 
-client.focused            #191724 #31748f #e0def4 #eb6f92 #31748f
-client.focused_inactive   #1f1d2e #403d52 #e0def4 #191724 #403d52
-client.focused_tab_title  #1f1d2e #403d52 #e0def4
-client.unfocused          #191724 #26233a #908caa #191724 #191724
-client.urgent             #191724 #26233a #908caa #191724 #191724
+client.focused			#191724 #31748f #e0def4 #eb6f92 #31748f
+client.focused_inactive		#1f1d2e #403d52 #e0def4 #191724 #403d52
+client.focused_tab_title	#1f1d2e #403d52 #e0def4
+client.unfocused		#191724 #26233a #908caa #191724 #191724
+client.urgent			#191724 #26233a #908caa #191724 #191724
 
 # # this is an attempt at replicates what i had with keyd, can't use
 # # caps for escape in games though, so i can't use this yet
@@ -63,78 +68,80 @@ client.urgent             #191724 #26233a #908caa #191724 #191724
 # bindsym Ctrl+Mod1+i exec wtype -M ctrl -k Right
 
 # WM
-bindsym $mod+c              kill
-bindsym $mod+Shift+q        reload
-bindsym $mod+Escape         exec hyprlock
-bindsym $mod+F8             exit
-bindsym $mod+F9             exec ~/.config/sway/logout.sh
-bindsym $mod+v              floating toggle
-bindsym $mod+f              fullscreen
-bindsym $mod+b              exec ~/.config/waybar/waybar.sh
-bindsym $mod+F12            exec dunstctl history-pop
+bindsym $mod+c			kill
+bindsym $mod+Shift+q		reload
+bindsym $mod+Escape		exec hyprlock
+bindsym $mod+F8			exit
+bindsym $mod+F9			exec ~/.config/sway/logout.sh
+bindsym $mod+v			floating toggle
+bindsym $mod+f			fullscreen
+bindsym $mod+b			exec ~/.config/waybar/waybar.sh
+bindsym $mod+F12		exec dunstctl history-pop
 
-bindsym $mod+j              layout tabbed
-bindsym $mod+l              layout toggle split
-bindsym $mod+y              split horizontal
-bindsym $mod+u              split vertical
+bindsym $mod+j			layout tabbed
+bindsym $mod+l			layout toggle split
+bindsym $mod+y			split horizontal
+bindsym $mod+u			split vertical
 
 # Apps/Scripts
-bindsym $mod+Ctrl+v         exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
-bindsym $mod+q              exec helium-browser
-bindsym $mod+Return         exec foot -e nvim # ~/.cargo/bin/neovide
-bindsym $mod+Shift+Return   exec foot
-bindsym $mod+w              exec firefox
-bindsym $mod+Shift+w        exec thunderbird
-bindsym $mod+r              exec rofi -show drun -no-fixed-num-lines
-bindsym $mod+Shift+r        exec rofi -show run
-bindsym $mod+semicolon      exec ~/.config/sway/scripts/wselect.sh
-bindsym $mod+Shift+f        exec pcmanfm
-bindsym $mod+s              exec ~/.config/hypr/scripts/hyprshot.sh "simple"
-bindsym Print               exec ~/.config/hypr/scripts/hyprshot.sh "screen"
-bindsym $mod+Shift+s        exec ~/.config/hypr/scripts/hyprshot.sh
-bindsym $mod+Shift+t        exec ~/.config/hypr/scripts/get-text.sh
-bindsym $mod+Shift+c        exec wl-color-picker clipboard
-bindsym $mod+period         exec rofi -modi emoji -show emoji -no-fixed-num-lines
-bindsym $mod+minus          exec ~/dotfiles/scripts/tts-neovide
-bindsym $mod+k              exec foot -e rmpc
+bindsym $mod+Ctrl+v		exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
+bindsym $mod+q			exec helium-browser
+bindsym $mod+Return		exec foot
+bindsym $mod+Shift+Return	exec kitty
+bindsym $mod+w			exec firefox
+bindsym $mod+Shift+w		exec thunderbird
+bindsym $mod+r			exec rofi -show drun -no-fixed-num-lines
+bindsym $mod+Shift+r		exec rofi -show run
+bindsym $mod+semicolon		exec ~/.config/sway/scripts/wselect.sh
+bindsym $mod+Shift+f		exec pcmanfm
+bindsym $mod+s			exec ~/.config/sway/scripts/shot.sh "simple"
+bindsym Print			exec ~/.config/sway/scripts/shot.sh "screen"
+bindsym $mod+Shift+s		exec ~/.config/sway/scripts/shot.sh
+bindsym $mod+Shift+t		exec ~/.config/sway/scripts/get-text.sh
+bindsym $mod+Shift+c		exec wl-color-picker clipboard
+bindsym $mod+period		exec rofi -modi emoji -show emoji -no-fixed-num-lines
+bindsym $mod+minus		exec ~/Desktop/dev/scripts/tts.sh
+bindsym $mod+d			exec wtype "$(date '+%Y.%m.%d')"
+bindsym $mod+k 			exec ~/.config/sway/scripts/rmpc-scratchpad.sh
+bindsym $mod+eacute		exec ~/Desktop/dev/scripts/wpdf.sh
 
 # Workspaces / windows
-bindsym $mod+Tab workspace back_and_forth
-bindsym Mod1+Tab exec swayr switch-to-urgent-or-lru-window
-bindsym $mod+p exec swayr switch-window
+bindsym $mod+Tab	workspace back_and_forth
+bindsym Mod1+Tab	exec swayr switch-to-urgent-or-lru-window
+bindsym $mod+p		exec swayr switch-window
 
-bindsym $mod+slash          workspace 1
-bindsym $mod+parenleft      workspace 2
-bindsym $mod+bracketleft    workspace 3
-bindsym $mod+braceleft      workspace 4
-bindsym $mod+apostrophe     workspace 5
-bindsym $mod+dollar         workspace 6
-bindsym $mod+exclam         workspace 7
-bindsym $mod+braceright     workspace 8
-bindsym $mod+bracketright   workspace 9
-bindsym $mod+parenright     workspace 10
+bindsym $mod+slash		workspace 1
+bindsym $mod+parenleft		workspace 2
+bindsym $mod+bracketleft	workspace 3
+bindsym $mod+braceleft		workspace 4
+bindsym $mod+apostrophe		workspace 5
+bindsym $mod+dollar		workspace 6
+bindsym $mod+exclam		workspace 7
+bindsym $mod+braceright		workspace 8
+bindsym $mod+bracketright	workspace 9
+bindsym $mod+parenright		workspace 10
 
-bindsym $mod+Shift+slash        move container to workspace 1;  workspace 1
-bindsym $mod+Shift+parenleft    move container to workspace 2;  workspace 2
-bindsym $mod+Shift+bracketleft  move container to workspace 3;  workspace 3
-bindsym $mod+Shift+braceleft    move container to workspace 4;  workspace 4
-bindsym $mod+Shift+apostrophe   move container to workspace 5;  workspace 5
-bindsym $mod+Shift+dollar       move container to workspace 6;  workspace 6
-bindsym $mod+Shift+exclam       move container to workspace 7;  workspace 7
-bindsym $mod+Shift+braceright   move container to workspace 8;  workspace 8
-bindsym $mod+Shift+bracketright move container to workspace 9;  workspace 9
-bindsym $mod+Shift+parenright   move container to workspace 10; 0workspace 10
+bindsym $mod+Shift+slash	move container to workspace 1;  workspace 1
+bindsym $mod+Shift+parenleft	move container to workspace 2;  workspace 2
+bindsym $mod+Shift+bracketleft	move container to workspace 3;  workspace 3
+bindsym $mod+Shift+braceleft	move container to workspace 4;  workspace 4
+bindsym $mod+Shift+apostrophe	move container to workspace 5;  workspace 5
+bindsym $mod+Shift+dollar	move container to workspace 6;  workspace 6
+bindsym $mod+Shift+exclam	move container to workspace 7;  workspace 7
+bindsym $mod+Shift+braceright	move container to workspace 8;  workspace 8
+bindsym $mod+Shift+bracketright	move container to workspace 9;  workspace 9
+bindsym $mod+Shift+parenright	move container to workspace 10; 0workspace 10
 
 bindsym --whole-window $mod+button4 workspace prev
 bindsym --whole-window $mod+button5 workspace next
 
-bindsym $mod+Left   workspace prev
-bindsym $mod+Right  workspace next
+bindsym $mod+Left	workspace prev
+bindsym $mod+Right	workspace next
 
-bindsym $mod+Ctrl+Left    workspace prev
-bindsym $mod+Ctrl+Right   workspace next
-bindsym $mod+Shift+Left   move container to workspace prev
-bindsym $mod+Shift+Right  move container to workspace next
+bindsym $mod+Ctrl+Left		workspace prev
+bindsym $mod+Ctrl+Right		workspace next
+bindsym $mod+Shift+Left		move container to workspace prev
+bindsym $mod+Shift+Right	move container to workspace next
 
 # Window
 bindsym $mod+h focus left
@@ -147,8 +154,8 @@ bindsym $mod+Shift+n move down
 bindsym $mod+Shift+e move up
 bindsym $mod+Shift+i move right
 
-bindsym $mod+Shift+k resize shrink height 20 px
-bindsym $mod+Shift+m resize grow height 20 px
+# bindsym $mod+Shift+k resize shrink height 20 px
+# bindsym $mod+Shift+m resize grow height 20 px
 
 bindsym $mod+button1 move
 bindsym $mod+button3 resize
@@ -186,16 +193,14 @@ for_window [title="Save.*"] \
 	move position center, \
 	resize set width 1000 px height 700 px
 
-assign [title="Minecraft.*"] 4
-assign [app_id="cs2"] 4
-assign [app_id="worldofwarships64.exe"] 4
+assign [app_id="firefox"] 1
 assign [app_id="overwatch.exe"] 4
-assign [app_id="discovery.exe"] 4
-assign [app_id="forzahorizon5.exe"] 4
-for_window [app_id="forzahorizon5.exe"] floating enable
-for_window [app_id="forzahorizon5.exe"] move position center
+assign [app_id="org.qbittorrent.qBittorrent"] 8
 
-assign [title="Picture-in-Picture"] 10
+assign [app_id="org.mozilla.Thunderbird"] 9
+assign [app_id="vesktop"] 9
+
+for_window [title="^Picture-in-Picture$"] move container to workspace number 10
 
 # Workspace settings
 workspace 1   output HDMI-A-1

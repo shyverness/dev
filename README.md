@@ -1,10 +1,6 @@
 J'utilise Arch Linux en passant
 
----
 
-# dev setup;
-
-![Capture d'écran de mon desktop actuel](assets/Screenshot_20260829_185019.png)
 
 | Directoire | Informations                              |
 | :--------: | :---------------------------------------- |
@@ -16,7 +12,7 @@ J'utilise Arch Linux en passant
 
 ### Wallpapers
 
-Les fonds d'écrans peuvent être trouvés ici: https://codeberg.org/winterl/wallpapers
+Les fonds d'écrans peuvent être trouvés ici: https://codeberg.org/shyverness/wallpapers
 
 ### keyboard layout
 

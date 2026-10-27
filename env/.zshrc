@@ -2,8 +2,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 export GPG_TTY=$(tty)
 
-export EDITOR="nvim"
-export VISUAL="$EDITOR"
+export EDITOR="ed"
+export VISUAL="nvim"
 export MAKEFLAGS="-j12"
 export NPROCESSORS_CONF="12"
 
@@ -15,6 +15,7 @@ export PATH="$HOME/.cargo/bin/:$PATH"
 
 export WORKSTATION="$HOME/Desktop/dev"
 
+export TEXMFOUTPUT="$HOME/.local/state/ltx/"
 
 # if [[ "$TERM" == "kmscon" ]]; then
 #   nvim ~
@@ -26,7 +27,7 @@ plugins=(
     git
     fzf-tab
     battery
-    vi-mode
+    # vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -40,10 +41,19 @@ precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%F{cyan}[%f%F{red}%b%f%F{cyan}]%f'
 
 setopt PROMPT_SUBST
-PROMPT='[%~] %F{green}>%f '
+PROMPT='[%~] ${vcs_info_msg_0_}
+%F{green}>%f '
 
-# bindkey -s ^t "^utmux-goway\n"
-bindkey -s ^f "^uvfz\n"
+bindkey -s ^t "^utmux attach-session\n"
+
+
+vfz-widget() {
+  BUFFER='vfz ~'
+  zle accept-line
+}
+zle -N vfz-widget
+bindkey '^F' vfz-widget
+
 
 zstyle ':completion:*:(vim|nvim):*' ignored-patterns '*.pdf'
 
@@ -52,10 +62,10 @@ _twink() {
 }
 
 compdef _twink twink
-_tmux-goway() {
+_sessions() {
     _files -/
 }
-compdef _tmux-goway tmux-goway
+compdef _sessions tmux-goway
 
 # setxkbmap ca > /dev/null 2>&1
 
@@ -75,3 +85,17 @@ export PATH
 
 export PATH=$PATH:/home/hiver/.spicetify
 
+
+
+# Start ssh-agent if one is not already running
+if ! pgrep -u "$USER" ssh-agent >/dev/null; then
+  eval "$(ssh-agent -s)" >/dev/null
+fi
+
+# Add keys that exist and are not already loaded
+for key in ~/.ssh/id_ed25519 ~/.ssh/id_rsa; do
+  if [[ -f "$key" ]] && ! ssh-add -l 2>/dev/null | grep -q "$(ssh-keygen -lf "$key" | awk '{print $2}')"; then
+    ssh-add "$key" >/dev/null 2>&1
+  fi
+done
+setopt no_beep

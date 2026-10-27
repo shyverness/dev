@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/home/hiver/Desktop/dev/scripts/tts.sh
+Name=tts
+NoDisplay=true
+StartupNotify=false
+Type=Application
+X-KDE-GlobalAccel-CommandShortcut=true

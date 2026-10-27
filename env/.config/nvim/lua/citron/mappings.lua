@@ -25,7 +25,7 @@ local function fzf_chdir()
 	local currentDir = vim.fn.getcwd()
 	local sources = {
 		"fd . ~ --type d --follow --exclude '.*' --max-depth 2",
-		"fd . ~/Desktop/ --type d --follow --exclude '.*' --max-depth 3",
+		"fd . ~/Desktop/ --type d --follow --exclude '.*' --max-depth 7",
 		"fd . ~/.config --type d --follow --max-depth 2",
 	}
 	if vim.fn.isdirectory("/run/media/fuyu147/VOLUME_NOIR/shared-data/") == 1 then
@@ -46,7 +46,39 @@ local function fzf_chdir()
 	})
 end
 
+local file        = "/home/hiver/.config/neomutt/aliases"
+local magicNumber = 20
+
+local function fzf_aliases()
+	if not file or vim.fn.filereadable(file) ~= 1 then
+		vim.notify("File is missing or unreadable: " .. tostring(file))
+		return
+	end
+
+	local contacts = {}
+	for _, line in ipairs(vim.fn.readfile(file)) do
+		if line:match("%S") then
+			contacts[#contacts + 1] = line:sub(magicNumber)
+		end
+	end
+
+	if #contacts == 0 then
+		vim.notify("No lines found in file")
+		return
+	end
+
+	vim.fn["fzf#run"]({
+		source = contacts,
+		sink = function(selected)
+			if selected then
+				vim.api.nvim_put({ selected }, "c", true, true)
+			end
+		end,
+	})
+end
+
 local mappings = {
+	{ "n", "<leader>ma", fzf_aliases },
 	{ "n", "<Enter>",    "<nop>" },
 	{ "t", "<C-q>",      [[<C-\><C-n>]] },
 	{ "n", "<C-t>",      fzf_chdir },
@@ -72,6 +104,8 @@ local mappings = {
 	end },
 	{ "n",               "<leader>sa", "ggVG" },
 	{ "n",               "<leader>pl", "<CMD>lua MiniFiles.open()<CR>" },
+	{ "n",               "<leader>pu", "<CMD>lua require'fzf-lua'.lsp_document_symbols()<CR>" },
+	{ "n",               "<leader>py", "<CMD>lua require'fzf-lua'.lsp_workspace_symbols()<CR>" },
 	{ "n",               "<leader>gf", "<C-w>gF" },
 	{ "n",               "<A-s>",      ":m +1<CR>" },
 	{ "n",               "<A-r>",      ":m -2<CR>" },
@@ -87,7 +121,7 @@ local mappings = {
 	{ { 'n', 'v', 'x' }, 'R',          'gR' },
 	{ { 'n', 'v', 'x' }, '<leader>cz', ':center<CR>' },
 
-	{ "n",               "<leader>cd", fzf_chdir,                      { desc = "Change directory with skim" } },
+	{ "n",               "<leader>cd", fzf_chdir,                                              { desc = "Change directory with skim" } },
 
 	{ "n", "<leader>y", function()
 		local pdf = vim.fn.expand("%:p:r") .. ".pdf"

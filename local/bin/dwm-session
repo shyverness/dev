@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+export XMODIFIERS="@im=fcitx"
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+pgrep -x fcitx5 > /dev/null || fcitx5 -d &
+
+
+~/.config/i3/xrandr.sh &
+
+blueman-applet &
+ckb-next-daemon &
+dunst &
+nm-applet &
+udiskie --tray &
+mpd --no-daemon ~/.config/mpd.conf &
+
+kwalletd6 &
+
+unclutter --timeout 15 &
+gammastep -m randr -l 46.3:-72.5 &
+greenclip daemon &
+
+setxkbmap ca
+setxkbmap -layout ca
+xset r rate 225 100
+xset s off
+xset dpms 6000 6000 6000
+xset m 0 0
+
+sleep 1
+
+nitrogen --restore
+
+exec dbus-run-session dwm

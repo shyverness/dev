@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+tmp_dir=$(mktemp -d)
+~/Desktop/repos/yt-dlp/yt-dlp.sh -f "bv[height>=720]+ba" -o "$tmp_dir/video.%(ext)s" "$1"
+mpv "$tmp_dir/video".*
+rm -rf "$tmp_dir"

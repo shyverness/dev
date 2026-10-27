@@ -13,3 +13,4 @@ set 	guioptions 	"sh"
 
 set	recolor		"true"
 set 	recolor-keephue	"true"
+set 	recolor-reverse-video 	true

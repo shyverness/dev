@@ -6,9 +6,8 @@
 
 config_version: 2
 settings:
-  content.javascript.clipboard:
-    https://chatgpt.com: access-paste
-    https://github.com: access-paste
-    https://translate.google.com: access-paste
-  content.notifications.enabled:
-    https://www.youtube.com: false
+  content.cookies.accept:
+    global: all
+  content.headers.user_agent:
+    https://accounts.google.com/*: Mozilla/5.0 ({os_info}; rv:131.0) Gecko/20100101
+      Firefox/131.0

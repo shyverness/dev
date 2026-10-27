@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Neomutt
+Exec=env LC_ALL=fr_CA.UTF-8 neomutt
+Terminal=true
+Type=Application
+Categories=Game;

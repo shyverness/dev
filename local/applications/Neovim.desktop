@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=NeoVim Alacritty
+Exec=env GLFW_IM_MODULE=fcitx alacritty -e nvim
+Terminal=false
+Type=Application
+Categories=Game;

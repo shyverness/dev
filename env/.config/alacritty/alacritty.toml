@@ -1,10 +1,10 @@
 [general]
 import = [
-  # "~/.config/alacritty/rosé-pine.toml",
+  "~/.config/alacritty/themes/themes/rose_pine.toml",
 ]
 
 [window]
-opacity = 0.96
+opacity = 1
 dynamic_padding = true
 
 
@@ -12,8 +12,10 @@ dynamic_padding = true
 cursor = "#EC5D2A"
 
 [font]
-# normal = { family = "comic code" }
-normal = { family = "courier prime" }
+# normal = { family = "comic code light" }
+# normal = { family = "courier prime" }
+# normal = { family = "new computer modern mono 10" }
+normal = { family = "Monocraft" }
 size = 20
 
 [keyboard]

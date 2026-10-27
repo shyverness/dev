@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/home/hiver/.local/bin/input-date.sh
+Name=input-date
+NoDisplay=true
+StartupNotify=false
+Type=Application
+X-KDE-GlobalAccel-CommandShortcut=true

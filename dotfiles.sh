@@ -34,4 +34,6 @@ envs=(
   .tmux.gruvbox-theme.conf
   .tmux.vague-theme.conf
   .zshrc
+  .vimrc
+  .exrc
 )

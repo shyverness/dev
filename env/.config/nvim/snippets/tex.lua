@@ -40,5 +40,13 @@ return {
 			f(function(_, s) return s.captures[1] end),
 			i(1)
 		})
-	)
+	),
+
+	-- these conflict with all.lua
+	s({ trig = ";lt", snippetType = "autosnippet" },
+		f(function() return os.date("%Y.%m.%d") end, {})
+	),
+	s({ trig = ";lh", snippetType = "autosnippet" },
+		f(function() return os.date("%H:%M") end, {})
+	),
 }

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec mpd --no-daemon ~/.config/mpd.conf &

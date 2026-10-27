@@ -1,5 +1,7 @@
 ---@diagnostic disable: undefined-global
 
+local useCustomColorColor = false
+
 local cursorColorForDarkTheme = "#EC5D2A"  -- "#e0def4"
 local cursorColorForLightTheme = "#EC5D2A" -- "#21202e"
 
@@ -66,12 +68,14 @@ local function save_theme(name)
 
 	unset_under()
 
-	if vim.o.background == "dark" then
-		vim.api.nvim_set_hl(0, "Cursor", { fg = "#000000", bg = cursorColorForDarkTheme })
-		vim.api.nvim_set_hl(0, "iCursor", { fg = "#000000", bg = cursorColorForDarkTheme })
-	elseif vim.o.background == "light" then
-		vim.api.nvim_set_hl(0, "Cursor", { fg = "#FFFFFF", bg = cursorColorForLightTheme })
-		vim.api.nvim_set_hl(0, "iCursor", { fg = "#FFFFFF", bg = cursorColorForLightTheme })
+	if useCustomColorColor then
+		if vim.o.background == "dark" then
+			vim.api.nvim_set_hl(0, "Cursor", { fg = "#000000", bg = cursorColorForDarkTheme })
+			vim.api.nvim_set_hl(0, "iCursor", { fg = "#000000", bg = cursorColorForDarkTheme })
+		elseif vim.o.background == "light" then
+			vim.api.nvim_set_hl(0, "Cursor", { fg = "#FFFFFF", bg = cursorColorForLightTheme })
+			vim.api.nvim_set_hl(0, "iCursor", { fg = "#FFFFFF", bg = cursorColorForLightTheme })
+		end
 	end
 
 	current_name = name
@@ -98,6 +102,36 @@ end
 ---@type ColorEntry[]
 local colorsList = {
 	{
+		name = "none",
+		enabled = true,
+		callback = function()
+			vim.opt.termguicolors = false
+			vim.cmd [[highlight clear]]
+			vim.cmd [[syntax off]]
+			vim.g.loaded_syntax = 1
+
+			local groups = {
+				"Normal", "Comment", "Constant", "Special", "Identifier",
+				"Statement", "PreProc", "Type", "Underlined", "Ignore",
+				"Error", "Todo", "String", "Number", "Boolean", "Function",
+				"Keyword", "Operator", "Title", "Cursor", "CursorLine",
+				"LineNr", "CursorLineNr", "SignColumn", "ColorColumn",
+				"Visual", "MatchParen", "Pmenu", "PmenuSel", "WildMenu",
+				"StatusLine", "StatusLineNC", "TabLine", "TabLineFill",
+				"VertSplit", "FoldColumn", "Folded", "IncSearch", "Search",
+				"Directory", "ErrorMsg", "ModeMsg", "MoreMsg", "Question",
+				"WarningMsg", "ErrorMsg", "NonText", "SpecialKey",
+				"SpellBad", "SpellCap", "SpellLocal", "SpellRare",
+				"DiffAdd", "DiffChange", "DiffDelete", "DiffText",
+			}
+			for _, group in ipairs(groups) do
+				vim.api.nvim_set_hl(0, group, { fg = "NONE", bg = "NONE", sp = "NONE", bold = false, italic = false, underline = false })
+			end
+
+			save_theme "none"
+		end,
+	},
+	{
 		name = "miniwinter",
 		enabled = true,
 		callback = function()
@@ -110,6 +144,54 @@ local colorsList = {
 		end,
 	},
 	{
+		name = "gruvbox light",
+		enabled = true,
+		callback = function()
+			vim.opt.background = "light"
+			vim.cmd [[colorscheme gruvbox]]
+
+			fix_visual()
+
+			save_theme "gruvbox light"
+		end,
+	},
+	{
+		name = "quiet light",
+		enabled = true,
+		callback = function()
+			vim.opt.background = "light"
+			vim.cmd [[colorscheme quiet]]
+
+			fix_visual()
+
+			save_theme "quiet light"
+		end,
+	},
+	{
+		name = "quiet",
+		enabled = true,
+		callback = function()
+			vim.opt.background = "dark"
+			vim.cmd [[colorscheme quiet]]
+
+			fix_visual()
+
+			save_theme "quiet"
+		end,
+	},
+	{
+		name = "gruvbox",
+		enabled = true,
+		callback = function()
+			vim.opt.background = "dark"
+			vim.cmd [[colorscheme gruvbox]]
+
+			fix_visual()
+
+			save_theme "gruvbox"
+		end,
+	},
+	{
 		name = "Luna",
 		enabled = true,
 		callback = function()
@@ -119,6 +201,18 @@ local colorsList = {
 			fix_visual()
 
 			save_theme "Luna"
+		end,
+	},
+	{
+		name = "Paper",
+		enabled = true,
+		callback = function()
+			vim.opt.background = "dark"
+			vim.cmd [[colorscheme mfd-paper]]
+
+			fix_visual()
+
+			save_theme "Paper"
 		end,
 	},
 	{

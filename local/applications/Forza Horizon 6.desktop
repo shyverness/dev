@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Forza Horizon 6
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/2483190
+Icon=steam_icon_2483190
+Terminal=false
+Type=Application
+Categories=Game;

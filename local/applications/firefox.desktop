@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Firefox
+Exec=firefox
+Exec=systemd-run --user --scope -p MemoryHigh=5G -p MemoryMax=6G -p MemorySwapMax=5G firefox
+Icon=firefox
+Terminal=false
+Type=Application

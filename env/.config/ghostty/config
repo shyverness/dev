@@ -1,14 +1,16 @@
 # background = #000000
 
-cursor-color = EC5D2A
+# cursor-color = EC5D2A
 
 
-background-opacity = 0.9
+background-opacity = 0.95
 # background-opacity = 1
 background-blur    = false
 
 confirm-close-surface = false
 
+font-family  = "newcomputermodernmono10"
+font-family  = "courier prime code"
 font-family  = "comic code"
 font-family  = "Zen Maru Gothic"
 font-size    = 20
@@ -30,7 +32,7 @@ window-padding-balance           = true
 window-padding-y                 = 0
 window-decoration                = server
 
-adjust-cursor-thickness = 3
+# adjust-cursor-thickness = 3
 
 keybind = ctrl+)=reset_font_size
 keybind = ctrl+]=goto_split:previous

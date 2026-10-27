@@ -1,4 +1,8 @@
 ---@diagnostic disable: undefined-global
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+local citronGroup = augroup("citron", {})
+
 
 vim.pack.add {
 	{ src = "https://github.com/williamboman/mason-lspconfig.nvim", },
@@ -14,6 +18,9 @@ vim.pack.add {
 
 local cmp = require "cmp"
 cmp.setup({
+	completion = {
+		autocomplete = false,
+	},
 	experimental = {
 		ghost_text = false
 	},
@@ -23,6 +30,7 @@ cmp.setup({
 		end
 	},
 	mapping = cmp.mapping.preset.insert({
+		["<C-Space>"] = cmp.mapping.complete(),
 		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
 		['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
 		['<Tab>'] = cmp.mapping.confirm({ select = true }),
@@ -43,16 +51,20 @@ vim.lsp.enable({
 	"ols",
 	"tinymist",
 	"vimtex",
+	"css-lsp",
 	"zls",
 	"ionide",
 	"gopls",
+	"ts_ls",
 	"haskell-language-server",
 	"rust-analyzer",
 	"csharp_ls",
+	"basedpyright",
+	"ocamllsp"
 })
 
 vim.diagnostic.config({
-	update_in_insert = true,
+	update_in_insert = false,
 	float = {
 		focusable = true,
 		style = "minimal",

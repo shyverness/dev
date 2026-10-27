@@ -1,44 +1,28 @@
 ---@diagnostic disable: undefined-global
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-local citronGroup = augroup("citron", {})
+-- local citronGroup = augroup("citron", {})
 
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+-- remove trailing whitespaces at the end of a line
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
 	callback = function()
-		if vim.bo.filetype == "" and vim.fn.expand("%:e") == "" then
-			vim.bo.filetype = "text"
-		end
+		vim.cmd([[%s/\s\+$//e]])
 	end,
 })
 
-autocmd('TextYankPost', {
+vim.api.nvim_create_autocmd('TextYankPost', {
 	group = augroup('HighlightYank', {}),
 	pattern = '*',
 	callback = function()
-		vim.hl.on_yank({
+		vim.hl.hl_op({
 			higroup = 'IncSearch',
 			timeout = 120,
 		})
 	end,
 })
 
--- remove trailing whitespaces at the end of a line
-autocmd({ "BufWritePre" }, {
-	group = citronGroup,
-	pattern = "*",
-	command = [[%s/\s\+$//e]],
-})
-
-vim.api.nvim_create_autocmd("BufReadCmd", {
-	pattern = { "*.mp3", "*.mp4", "*.mkv" },
-	callback = function()
-		local file = vim.fn.expand("<afile>")
-		vim.fn.jobstart({ "mpv", file }, { detach = true })
-		vim.cmd("bdelete!")
-	end,
-})
-
-vim.api.nvim_create_autocmd("BufReadCmd", {
+autocmd("BufReadCmd", {
 	pattern = { "*.jpg", "*.png", "*.jpeg", "*.webp" },
 	callback = function()
 		local file = vim.fn.expand("<afile>")
@@ -47,7 +31,7 @@ vim.api.nvim_create_autocmd("BufReadCmd", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("BufReadCmd", {
+autocmd("BufReadCmd", {
 	pattern = "*.pdf",
 	callback = function()
 		local file = vim.fn.expand("<afile>")
@@ -60,81 +44,54 @@ vim.api.nvim_create_autocmd("BufReadCmd", {
 --
 -- InsertLeave時に時間の除隊を記録し、InsertEnter時にその状態に切り替える
 
+local group = augroup("CitronFcitx", { clear = true })
+
 local function fcitx_running()
 	if vim.fn.executable("fcitx5-remote") == 0 then
 		return false
 	end
 
-	local ok, result = pcall(function()
-		return vim.system({ "fcitx5-remote" }):wait()
-	end)
+	local result = vim.system(
+		{ "fcitx5-remote" },
+		{ text = true }
+	):wait()
 
-	return ok and result.code ~= 255
+	return result.code == 0
 end
 
 if fcitx_running() then
-	local last_ime = ""
+	local last_ime
 
 	autocmd("InsertLeave", {
-		group = citronGroup,
+		group = group,
 		callback = function()
-			local result = vim.system({ "fcitx5-remote", "-n" }):wait()
+			local result = vim.system(
+				{ "fcitx5-remote", "-n" },
+				{ text = true }
+			):wait()
 
 			if result.code == 0 and result.stdout then
 				last_ime = vim.trim(result.stdout)
 			end
 
-			vim.system({ "fcitx5-remote", "-c" })
+			vim.system(
+				{ "fcitx5-remote", "-c" },
+				{ text = true }
+			):wait()
 		end,
 	})
 
-	autocmd("InsertEnter", {
-		group = citronGroup,
+	vim.api.nvim_create_autocmd("InsertEnter", {
+		group = group,
 		callback = function()
-			if last_ime ~= "" then
-				vim.system({ "fcitx5-remote", "-s", last_ime })
+			if last_ime and last_ime ~= "" then
+				vim.system(
+					{ "fcitx5-remote", "-s", last_ime },
+					{ text = true }
+				):wait()
 			end
 		end,
 	})
+else
+	--vim.notify("fcitx5-remote is not running", vim.log.levels.WARN)
 end
-
-autocmd('LspAttach', {
-	group = citronGroup,
-	callback = function(e)
-		local opts = { buffer = e.buf }
-		vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-		vim.keymap.set("n", "gi", function() vim.lsp.buf.implementation() end, opts)
-		vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-		vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-		vim.keymap.set("n", "<leader>ld", function() vim.diagnostic.open_float() end, opts)
-		vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, opts)
-		vim.keymap.set("n", "<leader>lz", function() vim.lsp.buf.references() end, opts)
-		vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, opts)
-		if vim.bo[e.buf].filetype ~= "typst" then
-			vim.keymap.set("n", "<leader>f", function()
-				local clients = vim.lsp.get_clients({ bufnr = 0 })
-				for _, client in ipairs(clients) do
-					if client:supports_method("textDocument/formatting") then
-						vim.lsp.buf.format()
-						return
-					end
-				end
-			end, { buffer = e.buf, desc = "Format the file" })
-		end
-		vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-		vim.keymap.set("n", "<leader>n", function() vim.diagnostic.jump { count = 1 } end, opts)
-		vim.keymap.set("n", "<leader>e", function() vim.diagnostic.jump { count = -1 } end, opts)
-	end
-})
-
-vim.api.nvim_create_autocmd("ModeChanged", {
-	callback = function()
-		local mode = vim.fn.mode()
-
-		if mode:match("[vV\22]") then
-			vim.opt.list = true
-		else
-			vim.opt.list = false
-		end
-	end,
-})
