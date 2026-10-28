@@ -31,7 +31,7 @@ alias gl="git log --graph --stat"
 alias glp="git log --graph --stat -p"
 alias glw="git log --oneline --graph --decorate --all"
 
-alias rg="rg -i"
+alias rg="rg -i --color=always"
 
 alias maple="~/maple2022/bin/xmaple"
 alias py="python"

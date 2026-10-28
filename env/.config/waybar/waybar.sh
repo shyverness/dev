@@ -3,14 +3,15 @@
 FORCE_MAIN_ONLY=false
 
 FORCE_DISABLE_LAPTOP=false
-FORCE_DISABLE_MONITOR=true
+FORCE_DISABLE_MONITOR=false
 
-LAPTOP_CONFIG="sway-lap-v1"
-MONITOR_CONFIG="sway-mon-vert-v1"
+LAPTOP_CONFIG="dwl-lap-v1"
+MONITOR_CONFIG="dwl-mon-v1"
 
 LAPTOPNAME="eDP-1"
 MONITORNAME="HDMI-A-1"
 
+# chaneg this weird shit to check $WAYLAND or somethin
 detect_compositor() {
   if command -v hyprctl &>/dev/null && hyprctl monitors -j &>/dev/null; then
     COMPOSITOR="hyprland"

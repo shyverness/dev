@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+
+startup() {
+	wlr-randr \
+		--output HDMI-A-1 --pos 0,0 \
+		--mode 1920x1080@119.878998Hz \
+		--output eDP-1 --right-of HDMI-A-1 \
+	>>"$HOME/wlr-randr.log" 2>&1 || return 1
+
+	mpd --no-daemon ~/.config/mpd.conf &
+	blueman-applet &
+	# ckb-next-daemon &
+	dunst &
+	fcitx5 &
+	nm-applet &
+	awww-daemon &
+	udiskie --tray &
+	wl-paste --watch cliphist store --no-persist &
+
+	dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=dwl &
+	dbus-update-activation-environment --systemd --all &
+
+	dbus-update-activation-environment --all &
+	# gnome-keyring-daemon --start --components=secrets &
+
+	wlsunset -S 8:00 -s 23:00 &
+
+
+	pkill gnome-keyring
+
+	export $(dbus-launch)
+	kwalletd6 &
+
+	# swayidle -w \
+	#   timeout 1800 'hyprlock' \
+	#   timeout 3600 'swaymsg "output * dpms off"' \
+	#   resume 'swaymsg "output * dpms on"' &
+
+	protonmail-bridge &
+	
+	return 0
+}
+
+
+
+(
+	for _ in {1..100}; do
+		for socket in "$XDG_RUNTIME_DIR"/wayland-*; do
+			[[ -S "$socket" ]] || continue
+			export WAYLAND_DISPLAY="${socket##*/}"
+				if startup; then
+				exit 0
+			fi
+			sleep 0.2
+		done
+		sleep 0.1
+	done
+	echo "Timed out waiting for Wayland socket" >>"$HOME/wlr-randr.log"
+) &
+
+
+
+exec dbus-run-session /usr/local/bin/dwl

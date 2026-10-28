@@ -1,0 +1,203 @@
+set $mod Mod1
+floating_modifier $mod
+
+font pango:Comic Code 12
+
+input * {
+	xkb_layout ca
+}
+
+focus_follows_mouse yes
+
+input type:pointer {
+	accel_profile flat
+	pointer_accel 0
+}
+
+input type:keyboard {
+	repeat_delay 200
+	repeat_rate 50
+}
+
+input type:touchpad {
+	natural_scroll enabled
+	dwt enabled
+	middle_emulation enabled
+	tap enabled
+}
+
+# bindsym $mod+Shift+semicolon input type:touchpad events toggle enabled disabled
+
+seat * {
+	hide_cursor 15000
+}
+
+default_border pixel none
+smart_gaps off
+gaps inner 5
+gaps outer 5
+# hide_edge_borders --i3 none
+
+client.focused			#191724 #31748f #e0def4 #eb6f92 #31748f
+client.focused_inactive		#1f1d2e #403d52 #e0def4 #191724 #403d52
+client.focused_tab_title	#1f1d2e #403d52 #e0def4
+client.unfocused		#191724 #26233a #908caa #191724 #191724
+client.urgent			#191724 #26233a #908caa #191724 #191724
+
+# # this is an attempt at replicates what i had with keyd, can't use
+# # caps for escape in games though, so i can't use this yet
+#
+# bindsym Mod1+h exec wtype -k Left
+# bindsym Mod1+n exec wtype -k Down
+# bindsym Mod1+e exec wtype -k Up
+# bindsym Mod1+i exec wtype -k Right
+#
+# bindsym Ctrl+Mod1+h exec wtype -M ctrl -k Left
+# bindsym Ctrl+Mod1+n exec wtype -M ctrl -k Down
+# bindsym Ctrl+Mod1+e exec wtype -M ctrl -k Up
+# bindsym Ctrl+Mod1+i exec wtype -M ctrl -k Right
+
+# WM
+bindsym $mod+c			kill
+bindsym $mod+Shift+q		reload
+bindsym $mod+Escape		exec hyprlock
+bindsym $mod+F8			exit
+bindsym $mod+F9			exec ~/.config/sway/logout.sh
+bindsym $mod+v			floating toggle
+bindsym $mod+f			fullscreen
+bindsym $mod+b			exec ~/.config/waybar/waybar.sh
+bindsym $mod+F12		exec dunstctl history-pop
+
+bindsym $mod+j			layout tabbed
+bindsym $mod+l			layout toggle split
+bindsym $mod+y			split horizontal
+bindsym $mod+u			split vertical
+
+# Apps/Scripts
+bindsym $mod+Ctrl+v		exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
+bindsym $mod+q			exec helium-browser
+bindsym $mod+Return		exec foot
+bindsym $mod+Shift+Return	exec kitty
+bindsym $mod+w			exec firefox
+bindsym $mod+Shift+w		exec thunderbird
+bindsym $mod+r			exec rofi -show drun -no-fixed-num-lines
+bindsym $mod+Shift+r		exec rofi -show run
+bindsym $mod+semicolon		exec ~/.config/sway/scripts/wselect.sh
+bindsym $mod+Shift+f		exec pcmanfm
+bindsym $mod+s			exec ~/.config/sway/scripts/shot.sh "simple"
+bindsym Print			exec ~/.config/sway/scripts/shot.sh "screen"
+bindsym $mod+Shift+s		exec ~/.config/sway/scripts/shot.sh
+bindsym $mod+Shift+t		exec ~/.config/sway/scripts/get-text.sh
+bindsym $mod+Shift+c		exec wl-color-picker clipboard
+bindsym $mod+period		exec rofi -modi emoji -show emoji -no-fixed-num-lines
+bindsym $mod+minus		exec ~/Desktop/dev/scripts/tts.sh
+bindsym $mod+d			exec wtype "$(date '+%Y.%m.%d')"
+bindsym $mod+k 			exec ~/.config/sway/scripts/rmpc-scratchpad.sh
+bindsym $mod+eacute		exec ~/Desktop/dev/scripts/wpdf.sh
+
+# Workspaces / windows
+bindsym $mod+Tab		workspace back_and_forth
+
+bindsym $mod+slash		workspace 1
+bindsym $mod+parenleft		workspace 2
+bindsym $mod+bracketleft	workspace 3
+bindsym $mod+braceleft		workspace 4
+bindsym $mod+apostrophe		workspace 5
+bindsym $mod+dollar		workspace 6
+bindsym $mod+exclam		workspace 7
+bindsym $mod+braceright		workspace 8
+bindsym $mod+bracketright	workspace 9
+bindsym $mod+parenright		workspace 10
+
+bindsym $mod+Shift+slash	move container to workspace 1;  workspace 1
+bindsym $mod+Shift+parenleft	move container to workspace 2;  workspace 2
+bindsym $mod+Shift+bracketleft	move container to workspace 3;  workspace 3
+bindsym $mod+Shift+braceleft	move container to workspace 4;  workspace 4
+bindsym $mod+Shift+apostrophe	move container to workspace 5;  workspace 5
+bindsym $mod+Shift+dollar	move container to workspace 6;  workspace 6
+bindsym $mod+Shift+exclam	move container to workspace 7;  workspace 7
+bindsym $mod+Shift+braceright	move container to workspace 8;  workspace 8
+bindsym $mod+Shift+bracketright	move container to workspace 9;  workspace 9
+bindsym $mod+Shift+parenright	move container to workspace 10; 0workspace 10
+
+bindsym --whole-window $mod+button4 workspace prev
+bindsym --whole-window $mod+button5 workspace next
+
+bindsym $mod+Left	workspace prev
+bindsym $mod+Right	workspace next
+
+bindsym $mod+Ctrl+Left		workspace prev
+bindsym $mod+Ctrl+Right		workspace next
+bindsym $mod+Shift+Left		move container to workspace prev
+bindsym $mod+Shift+Right	move container to workspace next
+
+# Window
+bindsym $mod+h focus left
+bindsym $mod+i focus right
+bindsym $mod+e focus up
+bindsym $mod+n focus down
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+n move down
+bindsym $mod+Shift+e move up
+bindsym $mod+Shift+i move right
+
+# bindsym $mod+Shift+k resize shrink height 20 px
+# bindsym $mod+Shift+m resize grow height 20 px
+
+bindsym $mod+button1 move
+bindsym $mod+button3 resize
+
+# bindsym --whole-window $mod+Btn4 move left
+# bindsym --whole-window $mod+Btn5 move right
+
+# Sound and brightness
+bindsym XF86AudioRaiseVolume  exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+ && ~/.config/hypr/scripts/volume-dunst.sh
+bindsym XF86AudioLowerVolume  exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%- && ~/.config/hypr/scripts/volume-dunst.sh
+bindsym $mod+m                exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle && ~/.config/hypr/scripts/volume-dunst.sh
+
+bindsym XF86MonBrightnessUp exec brightnessctl -e s 2%+
+bindsym XF86MonBrightnessDown exec brightnessctl -e s 2%-
+
+# Media control
+bindsym XF86AudioNext  exec playerctl next
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86AudioPlay  exec playerctl play-pause
+bindsym XF86AudioPrev  exec playerctl previous
+bindsym XF86AudioMute  exec playerctl play-pause
+bindsym $mod+Page_Up   exec pavucontrol
+bindsym $mod+Page_Down exec blueman-manager
+
+# Window rules
+for_window [class="steam_app_1551360"] floating enable
+
+for_window [app_id="pavucontrol"] \
+	floating enable, \
+	resize set width 1000 px height 600 px, \
+	move position center
+
+for_window [title="Save.*"] \
+	floating enable, \
+	move position center, \
+	resize set width 1000 px height 700 px
+
+assign [app_id="firefox"] 1
+assign [app_id="overwatch.exe"] 4
+assign [app_id="org.qbittorrent.qBittorrent"] 8
+
+assign [app_id="org.mozilla.Thunderbird"] 9
+assign [app_id="vesktop"] 9
+
+for_window [title="^Picture-in-Picture$"] move container to workspace number 10
+
+# Workspace settings
+workspace 1   output HDMI-A-1
+workspace 2   output HDMI-A-1
+workspace 3   output HDMI-A-1
+workspace 4   output HDMI-A-1
+workspace 5   output HDMI-A-1
+workspace 6   output HDMI-A-1
+workspace 7   output HDMI-A-1
+workspace 8   output HDMI-A-1
+workspace 9   output HDMI-A-1
+workspace 10  output eDP-1

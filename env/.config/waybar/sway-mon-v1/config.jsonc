@@ -50,8 +50,9 @@
         "show-passive-items": "true"
     },
     "clock": {
+	"interval": 1,
         "tooltip": true,
-        "format": "{:%Y.%m.%d %H:%M}"
+	"format": "{:%Y.%m.%d %H:%M:%S}"
     },
     "custom/net_down": {
         "exec": "python3 ~/.config/polybar/scripts/net_speed.py --one down",
