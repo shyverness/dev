@@ -69,7 +69,7 @@ rc() {
 
 eday() {
 	export LANG=fr_CA.UTF-8
-	currentDay="$HOME/Desktop/notes/edit/j/$(date +%Y.%m.%d).txt"
+	currentDay="$HOME/Desktop/notes/j/$(date +%Y.%m.%d).txt"
 	if [ -e "$currentDay" ]; then
 		echo "File [$currentDay] exists"
 	else

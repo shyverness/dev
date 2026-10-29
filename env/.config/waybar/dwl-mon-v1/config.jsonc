@@ -1,6 +1,6 @@
 {
 	"layer": "top",
-	"position": "bottom",
+	"position": "top",
 	"output": "HDMI-A-1",
 	"exclusive": true,
 	"modules-left": [
@@ -9,38 +9,16 @@
 		"dwl/window"
 	],
 	"modules-right": [
-		"battery",
-		"custom/sep",
-		"custom/swap",
-		"custom/sep",
-		"memory",
-		"custom/sep",
-		"cpu",
-		"custom/sep",
 		"clock",
-		"custom/sep",
 		"tray"
 	],
-	"cpu": {
-		"format": "CPU {usage}%"
-	},
-	"memory": {
-		"format": "RAM {percentage}%"
-	},
-	"custom/swap": {
-		"interval": 5,
-		"exec": "LC_ALL=C free | awk '/Swap:/ { if ($2 == 0) print \"SWAP: 0%\"; else printf \"SWAP: %.0f%%\\n\", ($3/$2)*100 }'",
-		"return-type": "text"
-	},
 	"dwl/tags": {
-		"all-outputs": true,
+		"all-outputs": false,
 		"hide-vacant": true
 	},
 	"dwl/window": {
-		"format": "{layout} {title}"
-	},
-	"custom/sep": {
-		"format": " "
+		"format": "{layout}{title}",
+		"hide-empty": true
 	},
 	"tray": {
 		"show-passive-items": "true"
@@ -49,29 +27,5 @@
 		"interval": 1,
 		"tooltip": true,
 		"format": "{:%Y.%m.%d %H:%M:%S}"
-	},
-	"custom/net_down": {
-		"exec": "python3 ~/.config/polybar/scripts/net_speed.py --one down",
-		"interval": 2,
-		"format": "↓↓ {}",
-		"tooltip": false
-	},
-	"custom/net_up": {
-		"exec": "python3 ~/.config/polybar/scripts/net_speed.py --one up",
-		"interval": 2,
-		"format": "↑↑ {}",
-		"tooltip": false
-	},
-	"custom/qbt_down": {
-		"exec": "python3 ~/.config/polybar/scripts/qbt_upload.py --one down",
-		"interval": 2,
-		"format": "↓ {}",
-		"tooltip": false
-	},
-	"custom/qbt_up": {
-		"exec": "python3 ~/.config/polybar/scripts/qbt_upload.py --one up",
-		"interval": 2,
-		"format": "↑ {}",
-		"tooltip": false
 	}
 }

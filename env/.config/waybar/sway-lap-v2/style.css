@@ -1,0 +1,74 @@
+@import "../../../.colors.css";
+@import "../colors.css";
+
+* {
+	border: none;
+	font-family: "Courier Prime", "Comic Code", "Noto Sans CJK JP";
+	font-size: 12pt;
+	background: transparent;
+	margin: 0px;
+	padding: 0px;
+}
+
+window#waybar {
+	color: orange;
+	background: transparent;
+}
+
+.modules-left,
+.modules-right {
+}
+
+.modules-left {
+	border-radius: 0px;
+	background: black;
+}
+.modules-right {
+	border-radius: 0px;
+	background: black;
+}
+
+tooltip {
+	color: orange;
+	background: black;
+	text-shadow: none;
+}
+
+tooltip * {
+	color: orange;
+	text-shadow: none;
+}
+
+#workspaces button {
+	color: orange;
+	background: black;
+}
+
+#workspaces button:hover {
+	color: pink;
+	border: 1px solid pink;
+}
+
+#workspaces button.occupied {
+	background: #333333;
+}
+
+#workspaces button.focused {
+	color: tomato;
+	border: 1px solid tomato;
+}
+
+#window {
+	color: black;
+	background: tomato;
+}
+
+#clock {
+	font-weight: 600;
+	color: tomato;
+}
+
+#tray menu {
+	background-color: black;
+}
+

@@ -1,108 +1,74 @@
 @import "../../../.colors.css";
+@import "../colors.css";
 
 * {
-    border: none;
-    font-family: "Courier Prime", "Comic Code", "Noto Sans CJK JP";
-    font-size: 16pt;
-    background: @surface;
+	border: none;
+	font-family: "Courier Prime", "Comic Code", "Noto Sans CJK JP";
+	font-size: 12pt;
+	background: transparent;
+	margin: 0px;
+	padding: 0px;
 }
 
 window#waybar {
-    color: @outline;
-    background: transparent;
+	color: orange;
+	background: transparent;
 }
 
 .modules-left,
-.modules-center,
 .modules-right {
-    background: @surface;
-    padding-top: 2px;
 }
 
 .modules-left {
-    border-radius: 0px 5px 0px 0px;
-    padding-right: 3px;
-}
-.modules-center {
-    border-radius: 5px 5px 0px 0px;
-    padding-right: 3px;
-    padding-left: 3px;
+	border-radius: 0px;
+	background: black;
 }
 .modules-right {
-    border-radius: 5px 0px 0px 0px;
-    padding-left: 3px;
+	border-radius: 0px;
+	background: black;
 }
 
 tooltip {
-    color: @on_surface;
-    background-color: @surface;
-    text-shadow: none;
+	color: orange;
+	background: black;
+	text-shadow: none;
 }
 
 tooltip * {
-    color: @on_surface;
-    text-shadow: none;
-}
-
-#custom-sep {
-    color: @outline_variant;
-    margin: 0;
-}
-
-#custom-net_down,
-#custom-qbt_down {
-    color: @primary;
-}
-
-#custom-net_up,
-#custom-qbt_up {
-    color: @tertiary;
+	color: orange;
+	text-shadow: none;
 }
 
 #tags button {
-    color: @outline;
-    background: none;
-    padding: 0;
+	color: orange;
+	background: black;
 }
 
 #tags button:hover {
-    color: @secondary;
+	color: pink;
+	border: 1px solid pink;
+}
+
+#tags button.occupied {
+	background: #333333;
 }
 
 #tags button.focused {
-    color: @tertiary;
+	color: tomato;
+	border: 1px solid tomato;
 }
 
-#temperature {
-    color: @tertiary;
-}
-
-#battery {
-    color: @primary;
+#window {
+	color: black;
+	background: tomato;
 }
 
 #clock {
-    font-weight: 600;
-    color: @primary;
-}
-
-#custom-bluetooth_devices {
-    color: @primary;
-}
-
-#pulseaudio {
-    color: @secondary;
-}
-
-#pulseaudio.muted {
-    color: @error;
+	font-weight: 600;
+	color: tomato;
 }
 
 #tray menu {
-    background-color: @surface;
+	background-color: black;
 }
 
-#taskbar button {
-    margin: 0px;
-    padding: 0px;
-}
