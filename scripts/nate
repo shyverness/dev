@@ -128,7 +128,8 @@ sync_remote() {
 		else
 			git commit -m "$1"
 		fi
-		git push
+		git push codeberg
+		git push github
 	}
 }
 
