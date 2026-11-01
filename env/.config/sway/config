@@ -43,8 +43,8 @@ seat * {
 
 default_border pixel 2
 smart_gaps off
-gaps inner 5
-gaps outer 5
+gaps inner 0
+gaps outer 0
 
 # # swayfx only
 # default_dim_inactive 0.12
@@ -75,6 +75,7 @@ bindsym $mod+Escape		exec hyprlock
 bindsym $mod+F8			exit
 bindsym $mod+F9			exec ~/.config/sway/logout.sh
 bindsym $mod+v			floating toggle
+bindsym $mod+space		focus mode_toggle
 bindsym $mod+f			fullscreen
 bindsym $mod+b			exec ~/.config/waybar/waybar.sh
 bindsym $mod+F12		exec dunstctl history-pop
@@ -136,13 +137,10 @@ bindsym $mod+Shift+parenright	move container to workspace 10; 0workspace 10
 bindsym --whole-window $mod+button4 workspace prev
 bindsym --whole-window $mod+button5 workspace next
 
-bindsym $mod+Left	workspace prev
-bindsym $mod+Right	workspace next
-
-bindsym $mod+Ctrl+Left		workspace prev
-bindsym $mod+Ctrl+Right		workspace next
-bindsym $mod+Shift+Left		move container to workspace prev
-bindsym $mod+Shift+Right	move container to workspace next
+# bindsym $mod+Ctrl+Left		workspace prev
+# bindsym $mod+Ctrl+Right		workspace next
+# bindsym $mod+Shift+Left		move container to workspace prev
+# bindsym $mod+Shift+Right	move container to workspace next
 
 # Window
 bindsym $mod+h focus left
@@ -155,8 +153,19 @@ bindsym $mod+Shift+n move down
 bindsym $mod+Shift+e move up
 bindsym $mod+Shift+i move right
 
-# bindsym $mod+Shift+k resize shrink height 20 px
-# bindsym $mod+Shift+m resize grow height 20 px
+
+# bindsym $mod+Left		move
+# bindsym $mod+Right		move
+
+bindsym $mod+Left		move left  20px
+bindsym $mod+Right		move right 20px
+bindsym $mod+Up			move up    20px
+bindsym $mod+Down		move down  20px
+
+bindsym $mod+Shift+Left		resize shrink width 20 px
+bindsym $mod+Shift+Right	resize grow width 20 px
+bindsym $mod+Shift+Up		resize shrink height 20 px
+bindsym $mod+Shift+Down		resize grow height 20 px
 
 bindsym $mod+button1 move
 bindsym $mod+button3 resize

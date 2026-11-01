@@ -9,7 +9,7 @@ background-blur    = false
 
 confirm-close-surface = false
 
-font-family  = "newcomputermodernmono10"
+# -family  = "newcomputermodernmono10"
 font-family  = "courier prime code"
 font-family  = "comic code"
 font-family  = "Zen Maru Gothic"
@@ -21,7 +21,7 @@ gtk-tabs-location   = bottom
 gtk-wide-tabs       = false
 gtk-toolbar-style   = raised
 
-# shell-integration-features = no-cursor
+shell-integration-features = no-cursor
 
 bell-features = no-title
 
@@ -32,7 +32,7 @@ window-padding-balance           = true
 window-padding-y                 = 0
 window-decoration                = server
 
-# adjust-cursor-thickness = 3
+adjust-cursor-thickness = 3
 
 keybind = ctrl+)=reset_font_size
 keybind = ctrl+]=goto_split:previous

@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env zsh
 
 dir=$(fd --type d --hidden --exclude .git . "${1:-.}")
 dir=$(printf '%s\n' "$dir" | fzf)
