@@ -128,7 +128,7 @@ sync_remote() {
 		else
 			git commit -m "$1"
 		fi
-		git push codeberg
+		git push "local"
 		git push github
 	}
 }
