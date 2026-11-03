@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
 if [ -z "$1" ]; then
-  file=$(fzf) || exit
+	file=$(fzf --preview 'bat {}') || exit
 else
-  file=$(fd . "$1" | fzf) || exit
+	file=$(fd . "$1" | fzf --preview 'bat {}') || exit
 fi
 
 [ -n "$file" ] && ed "$file"

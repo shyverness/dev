@@ -29,6 +29,7 @@ vim.opt.termguicolors = true
 vim.opt.switchbuf = 'usetab'
 
 vim.opt.nu = true
+-- vim.opt.rnu = true
 
 local spaceNumber = 8
 vim.opt.tabstop = spaceNumber
@@ -48,7 +49,7 @@ vim.opt.backup = false
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
-vim.opt.scrolloff = 30
+vim.opt.scrolloff = 3
 -- vim.opt.sidescrolloff = 0
 vim.opt.isfname:append("@-@")
 

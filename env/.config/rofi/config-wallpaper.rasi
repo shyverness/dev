@@ -8,7 +8,6 @@ configuration {
 * {
     background-color: transparent;
     text-color: @on-surface;
-    font: "Miracode 20";
 }
 
 window {

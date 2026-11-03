@@ -9,8 +9,8 @@ background-blur    = false
 
 confirm-close-surface = false
 
-# -family  = "newcomputermodernmono10"
-font-family  = "courier prime code"
+font-family  = "newcomputermodernmono10"
+font-family  = "courier prime"
 font-family  = "comic code"
 font-family  = "Zen Maru Gothic"
 font-size    = 20

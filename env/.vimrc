@@ -13,6 +13,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set switchbuf=usetab
 set number
+" set relativenumber
 
 set tabstop=8
 set shiftwidth=8
@@ -34,7 +35,7 @@ set signcolumn=no
 set foldmethod=marker
 set foldmarker={,}
 set foldlevelstart=99
-set cursorline
+" set cursorline
 set colorcolumn=72,80,120,180
 set textwidth=72
 

@@ -18,9 +18,9 @@ vim.pack.add {
 
 local cmp = require "cmp"
 cmp.setup({
-	completion = {
-		autocomplete = false,
-	},
+	--completion = {
+	--	autocomplete = false,
+	--},
 	experimental = {
 		ghost_text = false
 	},

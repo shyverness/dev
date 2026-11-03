@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 stty -ixon
-command rlwrap -n -H "$HOME/.ed_history" /usr/bin/ed "$@" -E
+command rlwrap -ncr -f . -H "$HOME/.ed_history" /usr/bin/ed "$@" -E
