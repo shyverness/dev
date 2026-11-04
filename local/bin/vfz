@@ -1,6 +1,10 @@
 #!/usr/bin/env zsh
 
-dir=$(fd . ~/Desktop/ ~/.config ~/Downloads ~/mounts/ | fzf --preview 'tree -L2 {}') || exit
+dir=$(
+  {
+    fd . ~/Desktop/
+    fd . ~/.config ~/Downloads
+  } | fzf --preview 'tree -L2 {}') || exit
 
 [[ -n "$dir" ]] || exit
 

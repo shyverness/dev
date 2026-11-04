@@ -12,6 +12,12 @@ set wildignorecase
 set encoding=utf-8
 set fileencoding=utf-8
 set switchbuf=usetab
+
+colorscheme retrobox
+set background=dark
+set termguicolors
+syntax on
+
 set number
 " set relativenumber
 
@@ -76,4 +82,9 @@ xnoremap R gR
 nnoremap <leader>cz :center<CR>
 vnoremap <leader>cz :center<CR>
 xnoremap <leader>cz :center<CR>
+
+nnoremap ç :Ex<CR>
+
+inoreabbrev <expr> ;t strftime('%Y.%m.%d')
+inoreabbrev <expr> ;h strftime('%H:%M')
 

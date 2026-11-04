@@ -6,21 +6,16 @@ confs=(
   fastfetch
   foot
   ghostty
-  hypr
   i3
   kitty
-  labwc
   matugen
   nvim
-  nvim-simple
-  openbox
   polybar
   qutebrowser
   rofi
   sioyek
   sway
   swayr
-  tmux-goway
   vesktop/themes
   waybar
   zathura

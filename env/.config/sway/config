@@ -162,10 +162,10 @@ bindsym $mod+Right		move right 10px
 bindsym $mod+Up			move up    10px
 bindsym $mod+Down		move down  10px
 
-bindsym $mod+Shift+Left		resize shrink width  5 px
-bindsym $mod+Shift+Right	resize grow   width  5 px
-bindsym $mod+Shift+Up		resize grow   height 5 px
-bindsym $mod+Shift+Down		resize shrink height 5 px
+bindsym $mod+Shift+Left		resize shrink right 10px
+bindsym $mod+Shift+Right	resize grow   right 10px
+bindsym $mod+Shift+Up		resize shrink down  10px
+bindsym $mod+Shift+Down		resize grow   down  10px
 
 bindsym $mod+button1 move
 bindsym $mod+button3 resize

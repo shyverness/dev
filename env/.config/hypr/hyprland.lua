@@ -1,7 +1,0 @@
-require "lua.autostart"
-require "lua.binds"
-require "lua.env"
-require "lua.config"
-require "lua.monitors"
-require "lua.windowrules"
-require "lua.workspaces"

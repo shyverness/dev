@@ -1,6 +1,0 @@
-xset r rate 250 40 &
-nitrogen --restore &
-~/.screenlayout/extern-layout.sh &
-~/.config/polybar/launch.sh &
-picom -b
-
