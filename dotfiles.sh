@@ -1,34 +1,34 @@
 #!/usr/bin/bash
 
 confs=(
-  alacritty
-  dunst
-  fastfetch
-  foot
-  ghostty
-  i3
-  kitty
-  matugen
-  nvim
-  polybar
-  qutebrowser
-  rofi
-  sioyek
-  sway
-  swayr
-  vesktop/themes
-  waybar
-  zathura
+	alacritty
+	dunst
+	fastfetch
+	foot
+	ghostty
+	i3
+	kitty
+	matugen
+	nvim
+	polybar
+	qutebrowser
+	rofi
+	sioyek
+	sway
+	swayr
+	vesktop/themes
+	waybar
+	zathura
 )
 
 envs=(
-  .aliases.sh
-  .ghci
-  .tmux.conf
-  .tmux.custom-theme.conf
-  .tmux.gruvbox-theme.conf
-  .tmux.vague-theme.conf
-  .zshrc
-  .vimrc
-  .exrc
+	.aliases.sh
+	.ghci
+	.tmux.conf
+	.tmux.custom-theme.conf
+	.tmux.gruvbox-theme.conf
+	.tmux.vague-theme.conf
+	.zshrc
+	.vimrc
+	.exrc
 )
