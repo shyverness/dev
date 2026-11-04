@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
-exec dbus-run-session -- bash -s <<'SESSION'
-set -u
+set -ux
 
+exec dbus-run-session -- bash -s <<'SESSION'
+
+set -ux
 export XDG_CURRENT_DESKTOP=dwl
 
 /usr/local/bin/dwl &
@@ -16,11 +18,18 @@ startup() {
 			[[ -S "$socket" ]] || continue
 			export WAYLAND_DISPLAY="${socket##*/}"
 
-			wlr-randr \
-				--output HDMI-A-1 --pos 0,0 \
-				--mode 1920x1080@119.878998Hz \
-				--output eDP-1 --right-of HDMI-A-1 \
-				>>"$HOME/wlr-randr.log" 2>&1 || return 1
+			outputs=$(wlr-randr) || return 1
+			
+			if grep -q '^HDMI-A-1 ' <<<"$outputs"; then
+				wlr-randr \
+					--output HDMI-A-1 --pos 0,0 \
+					--mode 1920x1080@119.878998Hz \
+					--output eDP-1 --right-of HDMI-A-1 \
+					>>"$HOME/wlr-randr.log" 2>&1 || return 1
+			else
+				wlr-randr --output eDP-1 --pos 0,0 \
+					>>"$HOME/wlr-randr.log" 2>&1 || return 1
+			fi
 
 			# Update the D-Bus activation environment before launching apps.
 			dbus-update-activation-environment --all
@@ -35,7 +44,7 @@ startup() {
 			udiskie --tray &
 			wl-paste --watch cliphist store --no-persist &
 			wlsunset -S 8:00 -s 23:00 &
-			systemctl start --user gnome-keyring-daemon.service
+			# systemctl start --user gnome-keyring-daemon.service
 
 			protonmail-bridge &
 

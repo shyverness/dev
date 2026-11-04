@@ -1,5 +1,15 @@
 #!/usr/bin/env zsh
 
-dir=$(fd --type d --hidden --exclude .git . "${1:-.}")
-dir=$(printf '%s\n' "$dir" | fzf)
-tmux new-session -c "$dir"
+dir=$(fd . ~/Desktop/ ~/.config ~/Downloads ~/mounts/ | fzf --preview 'tree -L2 {}') || exit
+
+[[ -n "$dir" ]] || exit
+
+name="$(basename $(dirname "$dir")) $(basename "$dir")"
+
+if [[ "$TERM" == "tmux-256color" ]]
+ 		then
+	session=$(tmux new-session -dP -F '#{session_id}' -c "$dir" -s "$name") || exit
+	tmux switch-client -t "$session"
+else
+	tmux new-session -c "$dir" -s "$name"
+fi
