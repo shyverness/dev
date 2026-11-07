@@ -87,7 +87,17 @@ local mappings = {
 	{ "n", "<ESC>",      "<CMD>noh<CR>" },
 	{ "n", "<leader>pf", ":FilesNoPDF<CR>", { desc = "Open fzf (no PDFs)" } },
 	{ "n", "<C-f>",      ":FilesNoPDF<CR>", { desc = "Open fzf (no PDFs)" } },
-	{ "n", "<leader>sk", ":make<CR>",       { desc = "Call make in split" } },
+	-- { "n", "<leader>sk", ":make<CR>",       { desc = "Call make in split" } },
+	{
+		"n",
+		"<leader>sk",
+		function()
+			vim.cmd("botright 10new")
+			vim.fn.termopen(vim.o.makeprg, { cwd = vim.fn.getcwd() })
+			vim.cmd('startinsert')
+		end,
+		{},
+	},
 	{ 'n', '<C-k><C-v>', function()
 		vim.cmd('split | term')
 		vim.cmd('startinsert')

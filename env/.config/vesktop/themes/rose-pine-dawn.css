@@ -7,14 +7,14 @@
 * @updateUrl https://github.com/rose-pine/discord/blob/rose-pine-dawn.theme.css
 */
 
-/* 
+/*
 CONFIGURATION 📝‼️
 */
 
 :root {
     /* 1=False ; 0=True */
     --windows-hover: 1;
-    
+
     --base: #faf4ed;
     --surface: #fffaf3;
     --overlay: #f2e9e1;
@@ -1216,13 +1216,13 @@ button[aria-label="User Settings"] .lottieIcon__5eb9b svg path {
 
 
 
-/* 
+/*
 ==================================================================
 
 ‼️✨  ROUNDNESS CUSTOMIZATIONS AHEAD  ✨‼️
 
 ==================================================================
-Credits: 
+Credits:
 */
 
 
@@ -1973,7 +1973,7 @@ Credits:
 
 /*
 ===========================
-USER POPOUT CARD 
+USER POPOUT CARD
 ===========================
 */
 #popout_43 {
@@ -1994,9 +1994,9 @@ Server Member List
     opacity: 1;
 }
 
-/* 
+/*
 ===========================
-Collapsible Search Bar 
+Collapsible Search Bar
 ===========================
 */
 .search__49676 {

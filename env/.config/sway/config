@@ -33,8 +33,6 @@ input type:touchpad {
 	tap enabled
 }
 
-# bindsym $mod+Shift+semicolon input type:touchpad events toggle enabled disabled
-
 seat * {
 	hide_cursor 15000
 }
@@ -44,27 +42,11 @@ smart_gaps off
 gaps inner 0
 gaps outer 0
 
-# # swayfx only
-# default_dim_inactive 0.12
-
 client.focused           #191724 #ff6347 #000080
 client.focused_inactive  #1f1d2e #000000 #000080
 client.focused_tab_title #1f1d2e #000000 #000080
 client.unfocused         #191724 #000000 #908caa
 client.urgent            #191724 #000000 #908caa
-
-# # this is an attempt at replicates what i had with keyd, can't use
-# # caps for escape in games though, so i can't use this yet
-#
-# bindsym Mod1+h exec wtype -k Left
-# bindsym Mod1+n exec wtype -k Down
-# bindsym Mod1+e exec wtype -k Up
-# bindsym Mod1+i exec wtype -k Right
-#
-# bindsym Ctrl+Mod1+h exec wtype -M ctrl -k Left
-# bindsym Ctrl+Mod1+n exec wtype -M ctrl -k Down
-# bindsym Ctrl+Mod1+e exec wtype -M ctrl -k Up
-# bindsym Ctrl+Mod1+i exec wtype -M ctrl -k Right
 
 # WM
 bindsym $mod+c			kill
@@ -98,7 +80,7 @@ bindsym $mod+s			exec ~/.config/sway/scripts/shot.sh "simple"
 bindsym Print			exec ~/.config/sway/scripts/shot.sh "screen"
 bindsym $mod+Shift+s		exec ~/.config/sway/scripts/shot.sh
 bindsym $mod+Shift+t		exec ~/.config/sway/scripts/get-text.sh
-bindsym $mod+Shift+c		exec wl-color-picker clipboard
+bindsym $mod+Shift+c		exec hyprpicker -a
 bindsym $mod+period		exec rofi -modi emoji -show emoji -no-fixed-num-lines
 bindsym $mod+minus		exec ~/Desktop/dev/scripts/tts.sh
 bindsym $mod+d			exec wtype "$(date '+%Y.%m.%d')"
