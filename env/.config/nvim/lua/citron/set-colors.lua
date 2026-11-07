@@ -1,6 +1,6 @@
 ---@diagnostic disable: undefined-global
 
-local useCustomColorColor = true
+local useCustomColorColor = false
 
 local cursorColorForDarkTheme = "#EC5D2A"  -- "#e0def4"
 local cursorColorForLightTheme = "#EC5D2A" -- "#21202e"
@@ -17,6 +17,17 @@ local function fix_visual()
 	if normal.fg and normal.bg then
 		vim.api.nvim_set_hl(0, "Visual", { fg = normal.bg, bg = normal.fg })
 	end
+
+	if useCustomColorColor then
+		if vim.o.background == "dark" then
+			vim.api.nvim_set_hl(0, "Cursor", { fg = "#000000", bg = cursorColorForDarkTheme })
+			vim.api.nvim_set_hl(0, "iCursor", { fg = "#000000", bg = cursorColorForDarkTheme })
+		elseif vim.o.background == "light" then
+			vim.api.nvim_set_hl(0, "Cursor", { fg = "#FFFFFF", bg = cursorColorForLightTheme })
+			vim.api.nvim_set_hl(0, "iCursor", { fg = "#FFFFFF", bg = cursorColorForLightTheme })
+		end
+	end
+
 end
 
 local function toggle_black_bg()
@@ -68,16 +79,6 @@ local function save_theme(name)
 
 	unset_under()
 
-	if useCustomColorColor then
-		if vim.o.background == "dark" then
-			vim.api.nvim_set_hl(0, "Cursor", { fg = "#000000", bg = cursorColorForDarkTheme })
-			vim.api.nvim_set_hl(0, "iCursor", { fg = "#000000", bg = cursorColorForDarkTheme })
-		elseif vim.o.background == "light" then
-			vim.api.nvim_set_hl(0, "Cursor", { fg = "#FFFFFF", bg = cursorColorForLightTheme })
-			vim.api.nvim_set_hl(0, "iCursor", { fg = "#FFFFFF", bg = cursorColorForLightTheme })
-		end
-	end
-
 	current_name = name
 
 	vim.fn.writefile({ name }, state_file)
@@ -102,33 +103,16 @@ end
 ---@type ColorEntry[]
 local colorsList = {
 	{
-		name = "none",
+		name = "zell",
 		enabled = true,
 		callback = function()
-			vim.opt.termguicolors = false
-			vim.cmd [[highlight clear]]
-			vim.cmd [[syntax off]]
+			-- vim.cmd [[syntax off]]
+			vim.cmd [[colorscheme zellner]]
 			vim.g.loaded_syntax = 1
 
-			local groups = {
-				"Normal", "Comment", "Constant", "Special", "Identifier",
-				"Statement", "PreProc", "Type", "Underlined", "Ignore",
-				"Error", "Todo", "String", "Number", "Boolean", "Function",
-				"Keyword", "Operator", "Title", "Cursor", "CursorLine",
-				"LineNr", "CursorLineNr", "SignColumn", "ColorColumn",
-				"Visual", "MatchParen", "Pmenu", "PmenuSel", "WildMenu",
-				"StatusLine", "StatusLineNC", "TabLine", "TabLineFill",
-				"VertSplit", "FoldColumn", "Folded", "IncSearch", "Search",
-				"Directory", "ErrorMsg", "ModeMsg", "MoreMsg", "Question",
-				"WarningMsg", "ErrorMsg", "NonText", "SpecialKey",
-				"SpellBad", "SpellCap", "SpellLocal", "SpellRare",
-				"DiffAdd", "DiffChange", "DiffDelete", "DiffText",
-			}
-			for _, group in ipairs(groups) do
-				vim.api.nvim_set_hl(0, group, { fg = "NONE", bg = "NONE", sp = "NONE", bold = false, italic = false, underline = false })
-			end
+			fix_visual()
 
-			save_theme "none"
+			save_theme "zell"
 		end,
 	},
 	{
@@ -177,6 +161,18 @@ local colorsList = {
 			fix_visual()
 
 			save_theme "quiet"
+		end,
+	},
+	{
+		name = "gruber",
+		enabled = true,
+		callback = function()
+			vim.opt.background = "dark"
+			vim.cmd [[colorscheme gruber-darker]]
+
+			fix_visual()
+
+			save_theme "gruber"
 		end,
 	},
 	{

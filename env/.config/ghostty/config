@@ -3,7 +3,7 @@
 # cursor-color = EC5D2A
 
 
-background-opacity = 0.95
+# background-opacity = 0.95
 # background-opacity = 1
 background-blur    = false
 

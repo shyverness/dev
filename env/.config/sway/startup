@@ -35,4 +35,4 @@ swayidle -w \
 
 
 kwalletd6 &
-protonmail-bridge &
+# protonmail-bridge &

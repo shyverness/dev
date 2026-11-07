@@ -1,81 +1,16 @@
 ---@diagnostic disable: undefined-global
 
+-- extended lines
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "cs", "csharp", "rust", "css", "json", "jsonc", "fs", "fsharp" },
+	pattern = { "cs", "csharp", "rust", "html", "css", "json", "jsonc", "fs", "fsharp" },
 	callback = function()
-		local width               = 8
-		vim.opt_local.shiftwidth  = width
-		vim.opt_local.tabstop     = width
-		vim.opt_local.softtabstop = width
-		vim.opt_local.expandtab   = false
-		vim.opt_local.textwidth   = 120
-	end,
-})
-
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "latex", "tex" },
-	callback = function()
-		vim.opt_local.textwidth = 0
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "haskell", "hs", "ocaml" },
-	callback = function()
-		local width               = 2
-		vim.opt_local.shiftwidth  = width
-		vim.opt_local.tabstop     = width
-		vim.opt_local.softtabstop = width
-		vim.opt_local.expandtab   = false
-	end,
-})
-
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		if vim.bo[args.buf].filetype ~= "typst" then
-			return
-		end
-
-		vim.opt_local.tabstop     = 8
-		vim.opt_local.shiftwidth  = 8
-		vim.opt_local.smartindent = false
-		vim.opt_local.softtabstop = 0
-		vim.opt_local.expandtab   = false
-
-		vim.defer_fn(function()
-			if vim.api.nvim_buf_is_valid(args.buf) then
-				vim.bo[args.buf].formatexpr = ""
-			end
-		end, 0)
+		vim.opt_local.textwidth = 120
 	end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "typst" },
 	callback = function()
-		vim.opt_local.sidescrolloff = 0
-
-		vim.opt_local.wrap          = false
-
-		local width                 = 8
-		vim.opt_local.shiftwidth    = width
-		vim.opt_local.tabstop       = width
-		vim.opt_local.softtabstop   = width
-		vim.opt_local.expandtab     = false
-
-		vim.opt_local.textwidth     = 72
-
-		vim.opt_local.autoindent    = false
-		vim.opt_local.smartindent   = false
-		vim.opt_local.cindent       = false
-		vim.opt_local.indentexpr    = ""
-		vim.opt_local.indentkeys    = ""
-
-		vim.opt_local.formatexpr    = ""
-
-		vim.opt_local.formatoptions = "t"
-
 		vim.keymap.set("n", "<leader>h", function()
 			local file = vim.fn.expand("%:p")
 			vim.system({ "typst", "c", file })
@@ -84,102 +19,26 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "text", "txt", "tex" },
-	callback = function()
-		vim.opt_local.sidescrolloff = 0
-
-		vim.opt_local.wrap          = false
-
-		vim.opt_local.colorcolumn   = { "72", "80", "88" }
-
-		local width                 = 8
-		vim.opt_local.shiftwidth    = width
-		vim.opt_local.tabstop       = width
-		vim.opt_local.softtabstop   = width
-		vim.opt_local.expandtab     = false
-
-		vim.opt_local.textwidth     = 72
-
-		vim.opt_local.autoindent    = false
-		vim.opt_local.smartindent   = false
-		vim.opt_local.cindent       = false
-		vim.opt_local.indentexpr    = ""
-		vim.opt_local.indentkeys    = ""
-
-		vim.opt_local.formatoptions = "t"
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "vimwiki" },
-	callback = function()
-		vim.opt_local.sidescrolloff = 0
-
-		vim.opt_local.wrap          = false
-
-		local width                 = 8
-		vim.opt_local.shiftwidth    = width
-		vim.opt_local.tabstop       = width
-		vim.opt_local.softtabstop   = width
-		vim.opt_local.expandtab     = false
-
-		vim.opt_local.textwidth     = 72
-
-		vim.opt_local.autoindent    = false
-		vim.opt_local.smartindent   = false
-		vim.opt_local.cindent       = false
-		vim.opt_local.indentexpr    = ""
-		vim.opt_local.indentkeys    = ""
-
-		vim.opt_local.formatoptions = "t"
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "mail", "gitcommit" },
-	callback = function()
-		vim.opt_local.sidescrolloff = 0
-
-		local width                 = 8
-		vim.opt_local.shiftwidth    = width
-		vim.opt_local.tabstop       = width
-		vim.opt_local.softtabstop   = width
-		vim.opt_local.expandtab     = false
-
-		vim.opt_local.textwidth     = 72
-
-		vim.opt_local.autoindent    = false
-		vim.opt_local.smartindent   = false
-		vim.opt_local.cindent       = false
-		vim.opt_local.indentexpr    = ""
-		vim.opt_local.indentkeys    = ""
-		vim.opt_local.formatoptions = "t"
-	end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "md", "markdown", "html" },
-	callback = function()
-		vim.opt_local.textwidth     = 72
-
-		vim.opt_local.sidescrolloff = 0
-
-		local width                 = 8
-		vim.opt_local.shiftwidth    = width
-		vim.opt_local.tabstop       = width
-		vim.opt_local.softtabstop   = width
-		vim.opt_local.expandtab     = false
-	end
-})
-
-vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "python" },
 	callback = function()
-		local width               = 8
-		vim.opt_local.shiftwidth  = width
-		vim.opt_local.tabstop     = width
-		vim.opt_local.softtabstop = width
-		vim.opt_local.expandtab   = false
-		vim.keymap.set("n", "<leader>h", ":w<CR>:!python3 %<CR>", { buffer = true, desc = "Run Python file" })
+		vim.keymap.set("n", "<leader>h", ":w<CR>:!python3 %<CR>",
+			{ buffer = true, desc = "Run Python file" })
 	end
+})
+
+-- force to use *my* settings over whatever the Lsp thinks is best.
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		vim.opt_local.tabstop     = 8
+		vim.opt_local.shiftwidth  = 8
+		vim.opt_local.smartindent = false
+		vim.opt_local.softtabstop = 0
+		vim.opt_local.expandtab   = false
+		vim.opt_local.autoindent  = false
+		vim.defer_fn(function()
+			if vim.api.nvim_buf_is_valid(args.buf) then
+				vim.bo[args.buf].formatexpr = ""
+			end
+		end, 0)
+	end,
 })

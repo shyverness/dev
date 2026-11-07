@@ -3,7 +3,6 @@ local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local citronGroup = augroup("citron", {})
 
-
 vim.pack.add {
 	{ src = "https://github.com/williamboman/mason-lspconfig.nvim", },
 	{ src = "https://github.com/hrsh7th/cmp-nvim-lsp", },
@@ -30,7 +29,7 @@ cmp.setup({
 		end
 	},
 	mapping = cmp.mapping.preset.insert({
-		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-k>"] = cmp.mapping.complete(),
 		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
 		['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
 		['<Tab>'] = cmp.mapping.confirm({ select = true }),
@@ -45,22 +44,22 @@ cmp.setup({
 
 
 vim.lsp.enable({
-	"bashls",
-	"lua_ls",
-	"clangd",
-	"ols",
-	"tinymist",
-	"vimtex",
-	"css-lsp",
-	"zls",
-	"ionide",
-	"gopls",
-	"ts_ls",
-	"haskell-language-server",
-	"rust-analyzer",
-	"csharp_ls",
 	"basedpyright",
-	"ocamllsp"
+	"bashls",
+	"clangd",
+	"csharp_ls",
+	"css-lsp",
+	"gopls",
+	"haskell-language-server",
+	"ionide",
+	"lua_ls",
+	"ocamllsp",
+	"ols",
+	"rust-analyzer",
+	"texlab",
+	"tinymist",
+	"ts_ls",
+	"zls",
 })
 
 vim.diagnostic.config({
@@ -105,4 +104,3 @@ autocmd('LspAttach', {
 		vim.keymap.set("n", "<leader>e", function() vim.diagnostic.jump { count = -1 } end, opts)
 	end
 })
-

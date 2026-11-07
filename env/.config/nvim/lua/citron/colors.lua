@@ -27,6 +27,7 @@ vim.pack.add {
 			})
 		end,
 	},
+	{ src = "https://github.com/blazkowolf/gruber-darker.nvim" },
 	{ src = "https://github.com/kungfusheep/mfd.nvim" },
 	{ src = "https://github.com/projekt0n/github-nvim-theme" },
 	{ src = "https://github.com/letorbi/vim-colors-modern-borland" },

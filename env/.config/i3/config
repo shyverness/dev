@@ -118,8 +118,10 @@ bindsym $super+Shift+n move down
 bindsym $super+Shift+e move up
 bindsym $super+Shift+i move right
 
+bindsym $super+Shift+l resize shrink width  20 px
+bindsym $super+Shift+u resize grow   width  20 px
 bindsym $super+Shift+k resize shrink height 20 px
-bindsym $super+Shift+m resize grow height 20 px
+bindsym $super+Shift+m resize grow   height 20 px
 
 bindsym $super+button1 move
 bindsym $super+button3 resize

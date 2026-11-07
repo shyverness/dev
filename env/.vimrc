@@ -14,7 +14,7 @@ set fileencoding=utf-8
 set switchbuf=usetab
 
 colorscheme retrobox
-set background=dark
+set background=light
 set termguicolors
 syntax on
 
@@ -35,7 +35,7 @@ set nobackup
 set hlsearch
 set incsearch
 
-set scrolloff=30
+set scrolloff=3
 set isfname+=@-@
 set signcolumn=no
 set foldmethod=marker

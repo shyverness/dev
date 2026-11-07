@@ -77,26 +77,24 @@ function _G.tmux_status()
 	return "[" .. session .. ":" .. window .. "]"
 end
 
-function _G.nvimcommit_status()
-	if _G.isWriteCommit then
-		return "nvim-commit"
-	else
-		return ""
-	end
-end
+-- function _G.nvimcommit_status()
+-- 	if _G.isWriteCommit then
+-- 		return "nvim-commit"
+-- 	else
+-- 		return ""
+-- 	end
+-- end
 
 local function status_line()
-	local mode = " [%{mode()}]"
-	local file_name = " [%-.40t]"
-	local modified = " %-m"
-	-- local file_type = " %y"
-	local diagnostics = " %{v:lua.lsp_diagnostics()}"
-	local gits = " %{v:lua.git_status()}"
-	local lsp = " %{v:lua.lsp_status()}"
+	local mode = "[%{mode()}]"
+	local file_name = "[%-.40t]"
+	local modified = "%-m"
+	local diagnostics = "%{v:lua.lsp_diagnostics()}"
+	local gits = "%{v:lua.git_status()}"
+	local lsp = "%{v:lua.lsp_status()}"
 	local right_align = "%="
 	local line_no = "%10([%l/%L%)]"
 	local search = "%{v:hlsearch ? v:lua.search_status() : ''}"
-	local commit = "%{v:lua.nvimcommit_status()}"
 	local tmux = "%{v:lua.tmux_status()}"
 
 	return table.concat({
@@ -109,7 +107,6 @@ local function status_line()
 		gits,
 		lsp,
 		tmux,
-		commit,
 		line_no
 	})
 end

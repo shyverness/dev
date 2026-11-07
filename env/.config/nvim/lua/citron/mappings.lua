@@ -24,9 +24,9 @@ vim.cmd([[
 local function fzf_chdir()
 	local currentDir = vim.fn.getcwd()
 	local sources = {
-		"fd . ~ --type d --follow --exclude '.*' --max-depth 2",
-		"fd . ~/Desktop/ --type d --follow --exclude '.*' --max-depth 7",
-		"fd . ~/.config --type d --follow --max-depth 2",
+		"fd . " .. currentDir .. " --type d --follow --exclude '.*' --max-depth 2",
+		-- "fd . ~/Desktop/ --type d --follow --exclude '.*' --max-depth 7",
+		-- "fd . ~/.config --type d --follow --max-depth 2",
 	}
 	if vim.fn.isdirectory("/run/media/fuyu147/VOLUME_NOIR/shared-data/") == 1 then
 		table.insert(sources, "fd . /run/media/fuyu147/VOLUME_NOIR/shared-data/ --type d --follow --max-depth 3")
@@ -87,10 +87,7 @@ local mappings = {
 	{ "n", "<ESC>",      "<CMD>noh<CR>" },
 	{ "n", "<leader>pf", ":FilesNoPDF<CR>", { desc = "Open fzf (no PDFs)" } },
 	{ "n", "<C-f>",      ":FilesNoPDF<CR>", { desc = "Open fzf (no PDFs)" } },
-	{ "n", "<leader>sk", function()
-		vim.cmd('split | term make')
-		vim.cmd('startinsert')
-	end, { desc = "Call make in split" } },
+	{ "n", "<leader>sk", ":make<CR>",       { desc = "Call make in split" } },
 	{ 'n', '<C-k><C-v>', function()
 		vim.cmd('split | term')
 		vim.cmd('startinsert')
