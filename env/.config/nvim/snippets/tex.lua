@@ -2,6 +2,11 @@
 
 return {
 	s({ trig = ";list", snippetType = "autosnippet" },
+		fmta([[\begin{itemize}
+	\item <>
+\end{itemize}]], { i(1) })
+	),
+	s({ trig = ";num", snippetType = "autosnippet" },
 		fmta([[\begin{enumerate}
 	\item <>
 \end{enumerate}]], { i(1) })
@@ -30,13 +35,13 @@ return {
 		})
 	),
 	s({ trig = "([^%s]+);f", snippetType = "autosnippet", regTrig = true },
-		fmta("<>_(<>)", {
+		fmta("<>_{<>}", {
 			f(function(_, s) return s.captures[1] end),
 			i(1)
 		})
 	),
 	s({ trig = "([^%s]+);t", snippetType = "autosnippet", regTrig = true },
-		fmta("<>^(<>)", {
+		fmta("<>^{<>}", {
 			f(function(_, s) return s.captures[1] end),
 			i(1)
 		})

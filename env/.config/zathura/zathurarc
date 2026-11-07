@@ -1,6 +1,6 @@
 # c-n to toggle statusbar
 
-include			t-cendre
+include			t-gruber
 
 map	=		zoom in
 map 	r 		recolor

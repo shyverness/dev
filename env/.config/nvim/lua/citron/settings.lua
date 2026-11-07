@@ -38,6 +38,7 @@ vim.opt.smartindent      = false
 vim.opt.softtabstop      = nil
 vim.opt.expandtab        = false
 vim.opt.autoindent       = false
+vim.opt.indentexpr       = ""
 
 
 vim.opt.wrap = false

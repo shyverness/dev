@@ -2,10 +2,8 @@ set $mod Mod4
 floating_modifier $mod
 
 output eDP-1    res 2560x1600@60Hz  pos 1920  0 scale 1.6 allow_tearing yes
+# output eDP-1    disable
 output HDMI-A-1 res 1920x1080@120Hz pos 0     0 scale 1   allow_tearing yes
-
-# output eDP-1    res 2560x1600@60Hz  pos -1600 0 scale 1.6 allow_tearing yes
-# output DP-2     res 1920x1080@120Hz pos 0     0 scale 1   allow_tearing yes
 
 font pango:Comic Code 12
 
@@ -162,10 +160,10 @@ bindsym $mod+Right		move right 10px
 bindsym $mod+Up			move up    10px
 bindsym $mod+Down		move down  10px
 
-bindsym $mod+Shift+Left		resize shrink right 10px
-bindsym $mod+Shift+Right	resize grow   right 10px
-bindsym $mod+Shift+Up		resize shrink down  10px
-bindsym $mod+Shift+Down		resize grow   down  10px
+bindsym $mod+Shift+Left		resize shrink width  10px
+bindsym $mod+Shift+Right	resize grow   width  10px
+bindsym $mod+Shift+Up		resize shrink height 10px
+bindsym $mod+Shift+Down		resize grow   height 10px
 
 bindsym $mod+button1 move
 bindsym $mod+button3 resize

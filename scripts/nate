@@ -63,9 +63,9 @@ update_env_files() {
 sync_files() {
 	update_env_files
 
-	echo "Copying vscode user settings"
-	cp $CP_FLAGS ~/.config/Code/User/settings.json $WORKSTATION/resources/Code
-	cp $CP_FLAGS ~/.config/Code/User/keybindings.json $WORKSTATION/resources/Code
+	# echo "Copying vscode user settings"
+	# cp $CP_FLAGS ~/.config/Code/User/settings.json $WORKSTATION/resources/Code
+	# cp $CP_FLAGS ~/.config/Code/User/keybindings.json $WORKSTATION/resources/Code
 
 	echo "Copying rmpc settings"
 	cp $CP_FLAGS ~/.config/rmpc/config.ron $WORKSTATION/resources/rmpc/
@@ -78,19 +78,19 @@ sync_files() {
 	rsync $RSYNC_FLAGS ~/.local/share/applications/ $WORKSTATION/local/applications
 
 	echo "Copying Katypst"
-	cp $CP_FLAGS -r ~/Desktop/homework/katypst/ $WORKSTATION/typst-pkg/
+	cp $CP_FLAGS -r ~/Desktop/outing/katypst/ $WORKSTATION/typst-pkg/
 	rm -rf $WORKSTATION/typst-pkg/katypst/.git
 
 	echo "Copying math Typst lib"
-	cp $CP_FLAGS -r ~/Desktop/homework/mathy/ $WORKSTATION/typst-pkg/
+	cp $CP_FLAGS -r ~/Desktop/outing/mathy/ $WORKSTATION/typst-pkg/
 	rm -rf $WORKSTATION/typst-pkg/mathy/.git
 
 	echo "Copying Simple Template Typst"
-	cp $CP_FLAGS -r ~/Desktop/homework/simple-template/ $WORKSTATION/typst-pkg/
+	cp $CP_FLAGS -r ~/Desktop/outing/simple-template/ $WORKSTATION/typst-pkg/
 	rm -rf $WORKSTATION/typst-pkg/simple-template/.git
 
 	echo "Copying book template"
-	cp $CP_FLAGS -r ~/Desktop/homework/book_template_winter/ $WORKSTATION/typst-pkg/
+	cp $CP_FLAGS -r ~/Desktop/outing/book_template_winter/ $WORKSTATION/typst-pkg/
 	rm -rf $WORKSTATION/typst-pkg/book_template_winter/.git
 
 

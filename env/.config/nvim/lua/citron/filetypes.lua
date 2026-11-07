@@ -35,6 +35,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.opt_local.softtabstop = 0
 		vim.opt_local.expandtab   = false
 		vim.opt_local.autoindent  = false
+		vim.opt_local.indentexpr  = ""
 		vim.defer_fn(function()
 			if vim.api.nvim_buf_is_valid(args.buf) then
 				vim.bo[args.buf].formatexpr = ""
