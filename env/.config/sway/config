@@ -70,7 +70,7 @@ bindsym $mod+Ctrl+v		exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist 
 bindsym $mod+q			exec helium-browser
 bindsym $mod+Return		exec alacritty
 bindsym $mod+Shift+Return	exec kitty
-bindsym $mod+w			exec firefox
+bindsym $mod+w			exec librewolf
 bindsym $mod+Shift+w		exec thunderbird
 bindsym $mod+r			exec rofi -show drun -no-fixed-num-lines
 bindsym $mod+Shift+r		exec rofi -show run
@@ -185,12 +185,12 @@ for_window [title="Save.*"] \
 	move position center, \
 	resize set width 1000 px height 700 px
 
-assign [app_id="firefox"] 1
-assign [app_id="overwatch.exe"] 4
+assign [app_id="firefox"]                     1
+# assign [app_id="librewolf"]                   3
+assign [app_id="overwatch.exe"]               4
 assign [app_id="org.qbittorrent.qBittorrent"] 8
-
-assign [app_id="org.mozilla.Thunderbird"] 9
-assign [app_id="vesktop"] 9
+assign [app_id="org.mozilla.Thunderbird"]     9
+assign [app_id="vesktop"]                     9
 
 for_window [title="^Picture-in-Picture$"] move container to workspace number 10
 
