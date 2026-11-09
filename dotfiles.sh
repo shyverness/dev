@@ -13,9 +13,7 @@ confs=(
 	polybar
 	qutebrowser
 	rofi
-	sioyek
 	sway
-	swayr
 	vesktop/themes
 	waybar
 	zathura
@@ -23,12 +21,14 @@ confs=(
 
 envs=(
 	.aliases.sh
+	.exrc
 	.ghci
 	.tmux.conf
 	.tmux.custom-theme.conf
 	.tmux.gruvbox-theme.conf
 	.tmux.vague-theme.conf
-	.zshrc
 	.vimrc
-	.exrc
+	.xinitrc
+	.zprofile
+	.zshrc
 )

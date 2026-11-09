@@ -88,17 +88,15 @@ autocmd('LspAttach', {
 		vim.keymap.set("n", "<leader>la", function() vim.lsp.buf.code_action() end, opts)
 		vim.keymap.set("n", "<leader>lz", function() vim.lsp.buf.references() end, opts)
 		vim.keymap.set("n", "<leader>lr", function() vim.lsp.buf.rename() end, opts)
-		if vim.bo[e.buf].filetype ~= "typst" then
-			vim.keymap.set("n", "<leader>f", function()
-				local clients = vim.lsp.get_clients({ bufnr = 0 })
-				for _, client in ipairs(clients) do
-					if client:supports_method("textDocument/formatting") then
-						vim.lsp.buf.format()
-						return
-					end
-				end
-			end, { buffer = e.buf, desc = "Format the file" })
-		end
+		-- vim.keymap.set("n", "<leader>f", function()
+		-- 	local clients = vim.lsp.get_clients({ bufnr = 0 })
+		-- 	for _, client in ipairs(clients) do
+		-- 		if client:supports_method("textDocument/formatting") then
+		-- 			vim.lsp.buf.format()
+		-- 			return
+		-- 		end
+		-- 	end
+		-- end, { buffer = e.buf, desc = "Format the file" })
 		vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 		vim.keymap.set("n", "<leader>n", function() vim.diagnostic.jump { count = 1 } end, opts)
 		vim.keymap.set("n", "<leader>e", function() vim.diagnostic.jump { count = -1 } end, opts)
