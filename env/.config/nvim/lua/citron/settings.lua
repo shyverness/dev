@@ -35,11 +35,18 @@ local spaceNumber        = 8
 vim.opt.tabstop          = spaceNumber
 vim.opt.shiftwidth       = spaceNumber
 vim.opt.smartindent      = false
+vim.opt.smarttab         = false
 vim.opt.softtabstop      = nil
 vim.opt.expandtab        = false
 vim.opt.autoindent       = false
 vim.opt.indentexpr       = ""
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	callback = function()
+		vim.opt_local.formatoptions:remove({ "r", "o" })
+	end,
+})
 
 vim.opt.wrap = false
 vim.opt.showbreak = "\\-"

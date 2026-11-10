@@ -20,7 +20,7 @@ vim.pack.add {
 	{ src = "https://github.com/ionide/Ionide-vim" },
 	{ src = "https://github.com/vimwiki/vimwiki" },
 	{ src = "https://github.com/MunifTanjim/nui.nvim" },
-	{ src = "https://github.com/ray-x/lsp_signature.nvim" },
+	-- { src = "https://github.com/ray-x/lsp_signature.nvim" },
 	{ src = "https://github.com/HakonHarnes/img-clip.nvim" },
 	{ src = "https://github.com/nvim-mini/mini.trailspace" },
 	-- { src = "https://github.com/romus204/tree-sitter-manager.nvim" },
@@ -186,25 +186,25 @@ vim.g.vimwiki_key_mappings = {
 	all_maps = 0,
 }
 
-local sigConfig = {
-	bind = true,
-	handler_opts = {
-		border = "rounded"
-	}
-}
-local sig = require("lsp_signature")
+-- local sigConfig = {
+-- 	bind = true,
+-- 	handler_opts = {
+-- 		border = "rounded"
+-- 	}
+-- }
+-- local sig = require("lsp_signature")
 
-vim.api.nvim_create_autocmd("LspAttach", {
-	callback = function(args)
-		local ft = vim.bo[args.buf].filetype
-
-		if ft == "fsharp" then
-			return
-		end
-
-		sig.on_attach(sigConfig, args.buf)
-	end,
-})
+-- vim.api.nvim_create_autocmd("LspAttach", {
+-- 	callback = function(args)
+-- 		local ft = vim.bo[args.buf].filetype
+--
+-- 		if ft == "fsharp" then
+-- 			return
+-- 		end
+--
+-- 		sig.on_attach(sigConfig, args.buf)
+-- 	end,
+-- })
 
 require("img-clip").setup {
 	default = {

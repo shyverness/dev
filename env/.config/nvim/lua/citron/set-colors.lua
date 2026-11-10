@@ -1,6 +1,6 @@
 ---@diagnostic disable: undefined-global
 
-local useCustomColorColor = false
+local useCustomColorColor = true
 
 local cursorColorForDarkTheme = "#EC5D2A"  -- "#e0def4"
 local cursorColorForLightTheme = "#EC5D2A" -- "#21202e"

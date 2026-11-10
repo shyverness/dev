@@ -1,9 +1,5 @@
 #!/usr/bin/env bash
 
-# After locking/suspend, xautolock locks after the set amount of time
-# if no inputs, which is not nice when watching a video or something.
-# Restarting it brings it back to default behaviour where it won't lock
-# when watching something.
 pkill xautolock
 
 (
@@ -29,6 +25,7 @@ if [[ "$selection" == "Lock & Screen Off" ]]; then
 	xset dpms force off
 elif [[ "$selection" == "Lock & Suspend" ]]; then
 	i3lock -c 191724
+	sleep 1
 	systemctl suspend
 elif [[ "$selection" == "Shutdown" ]]; then
 	systemctl poweroff
