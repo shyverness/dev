@@ -4,97 +4,97 @@ floating_modifier $super
 
 exec --no-startup-id ~/.config/i3/startup
 
-font				pango:Monocraft 12
+font pango:comic code 10
 
-focus_follows_mouse		yes
+focus_follows_mouse             yes
 
-focus_on_window_activation	none
+focus_on_window_activation      none
 
-default_border pixel 2
-for_window [class="steam_app_2357570"] border pixel 0
+default_border                  pixel 2
+default_floating_border         normal
 
-gaps inner 0
-gaps outer 0
+gaps                            inner 0
+gaps                            outer 0
 
-popup_during_fullscreen smart
-focus_on_window_activation none
+popup_during_fullscreen         smart
+focus_on_window_activation      none
 
-client.focused			#191724 #ebbcba #e0def4 #eb6f92 #ebbcba
-client.focused_inactive		#1f1d2e #403d52 #e0def4 #191724 #403d52
-client.focused_tab_title	#1f1d2e #403d52 #e0def4
-client.unfocused		#191724 #26233a #908caa #191724 #191724
-client.urgent			#191724 #26233a #908caa #191724 #191724
+# client.focused                  #ffdd33 #282828 #e4e4ef #ffdd33 #ffdd33
+# client.focused_inactive         #484848 #282828 #95a99f #484848 #484848
+# client.focused_tab_title        #282828 #282828 #e4e4ef
+# client.unfocused                #453d41 #181818 #95a99f #453d41 #453d41
+# client.urgent                   #f43841 #282828 #e4e4ef #f43841 #f43841
 
 
 # WM
-bindsym $super+c		kill
-bindsym $super+F8		exit
-bindsym $super+Shift+q		reload
-bindsym $super+Escape		exec --no-startup-id i3lock -c 191724
-bindsym $super+F9		exec --no-startup-id ~/.config/i3/logout.sh
-bindsym $super+v		floating toggle
-bindsym $super+f		fullscreen
-bindsym $super+Shift+p		move container to output right
-bindsym $super+F12		exec --no-startup-id dunstctl history-pop
+bindsym $super+c                kill
+bindsym $super+F8               exit
+bindsym $super+Shift+q          reload
+bindsym $super+Escape           exec --no-startup-id i3lock -c 181818
+bindsym $super+F9               exec --no-startup-id ~/.config/i3/logout.sh
+bindsym $super+v                floating toggle
+bindsym $super+f                fullscreen
+bindsym $super+Shift+p          move container to output right
+bindsym $super+F12              exec --no-startup-id dunstctl history-pop
 
-bindsym $super+j		layout tabbed
-bindsym $super+Shift+j		layout stacking
-bindsym $super+l		layout toggle split
-bindsym $super+y		split horizontal
-bindsym $super+u		split vertical
+bindsym $super+j                layout tabbed
+bindsym $super+Shift+j          layout stacking
+bindsym $super+l                layout toggle split
+bindsym $super+y                split horizontal
+bindsym $super+u                split vertical
 
 # Apps/Scripts
-bindsym $super+Ctrl+v		exec --no-startup-id \
-					greenclip print \
-					| rofi -dmenu -p "Clipboard" \
-					| xclip -selection clipboard
-bindsym $super+q		exec --no-startup-id helium-browser
-bindsym $super+Return		exec st
-bindsym $super+Shift+Return	exec --no-startup-id neovide
-bindsym $super+w		exec --no-startup-id firefox
-bindsym $super+Shift+w		exec --no-startup-id thunderbird
-# bindsym $super+r		exec --no-startup-id dmenu_run -nb '#191724' -nf '#e0def4' -sb '#31748f' -sf '#191724' -fn 'Comic Code:size=12'
-bindsym $super+r		exec --no-startup-id rofi -show drun -no-fixed-num-lines
-bindsym $super+Shift+r		exec --no-startup-id dmenu_run -m -1
-bindsym $super+semicolon	exec --no-startup-id ~/.config/i3/WallpaperSelect.sh
-bindsym $super+Shift+f		exec --no-startup-id pcmanfm
-bindsym $super+s		exec --no-startup-id spectacle -i
-bindsym Print			exec --no-startup-id spectacle -f
-bindsym $super+Shift+s		exec --no-startup-id spectacle -i
-bindsym $super+Shift+c		exec --no-startup-id xcolor | xclip -selection clipboard
-bindsym $super+period		exec --no-startup-id rofi -modi emoji -show emoji -no-fixed-num-lines
-bindsym $super+minus		exec --no-startup-id ~/dotfiles/scripts/tts-neovide
-bindsym $super+b		exec --no-startup-id pkill polybar || ~/.config/polybar/launch.sh
-bindsym $super+k		exec --no-startup-id ~/.config/i3/rmpc-scratchpad.sh
-bindsym --release $super+d		exec --no-startup-id xdotool type --clearmodifiers "$(date '+%Y.%m.%d')"
+bindsym $super+Ctrl+v           exec --no-startup-id \
+                                        greenclip print \
+                                        | rofi -dmenu -p "Clipboard" \
+                                        | xclip -selection clipboard
+bindsym $super+q                exec --no-startup-id helium-browser
+bindsym $super+Return           exec st
+bindsym $super+Shift+Return     exec --no-startup-id neovide
+bindsym $super+w                exec --no-startup-id librewolf
+bindsym $super+Shift+w          exec --no-startup-id firefox
+# bindsym $super+r              exec --no-startup-id dmenu_run -nb '#181818' -nf '#e4e4ef' -sb '#96a6c8' -sf '#181818' -fn 'Comic Code:size=12'
+bindsym $super+r                exec --no-startup-id rofi -show drun -no-fixed-num-lines
+bindsym $super+Shift+r          exec --no-startup-id dmenu_run -nb '#181818' -nf '#e4e4ef' -sb '#96a6c8' -sf '#181818' -fn 'Comic Code:size=12'
+bindsym $super+semicolon        exec --no-startup-id ~/.config/i3/WallpaperSelect.sh
+bindsym $super+Shift+f          exec --no-startup-id pcmanfm
+bindsym $super+s                exec --no-startup-id spectacle -i
+bindsym Print                   exec --no-startup-id spectacle -f
+bindsym $super+Shift+s          exec --no-startup-id spectacle -i
+bindsym $super+Shift+c          exec --no-startup-id xcolor | xclip -selection clipboard
+bindsym $super+period           exec --no-startup-id rofi -modi emoji -show emoji -no-fixed-num-lines
+bindsym $super+minus            exec --no-startup-id ~/dotfiles/scripts/tts-neovide
+bindsym $super+b                exec --no-startup-id pkill polybar || ~/.config/polybar/launch.sh
+bindsym $super+k                exec --no-startup-id ~/.config/i3/rmpc-scratchpad.sh
+bindsym --release $super+d              exec --no-startup-id xdotool type --clearmodifiers "$(date '+%Y.%m.%d')"
 
-bindsym $super+Tab		workspace back_and_forth
-bindsym $super+p		exec --no-startup-id rofi -show window
-bindsym $alt+Tab		exec ~/.config/i3/i3-cycle-focus.py --switch
+bindsym $super+Tab              workspace back_and_forth
+bindsym $super+p                exec --no-startup-id rofi -show window
+bindsym $alt+Tab                exec ~/.config/i3/i3-cycle-focus.py --switch
 
-bindsym $super+shift+b sticky toggle
+bindsym $super+shift+b          sticky toggle
 
-bindsym $super+slash		workspace 1
-bindsym $super+parenleft	workspace 2
-bindsym $super+bracketleft	workspace 3
-bindsym $super+braceleft	workspace 4
-bindsym $super+apostrophe	workspace 5
-bindsym $super+dollar		workspace 6
-bindsym $super+exclam		workspace 7
-bindsym $super+braceright	workspace 8
-bindsym $super+bracketright	workspace 9
-bindsym $super+parenright	workspace 10
+bindsym $super+slash            workspace 1
+bindsym $super+parenleft        workspace 2
+bindsym $super+bracketleft      workspace 3
+bindsym $super+braceleft        workspace 4
+bindsym $super+apostrophe       workspace 5
+bindsym $super+dollar           workspace 6
+bindsym $super+exclam           workspace 7
+bindsym $super+braceright       workspace 8
+bindsym $super+bracketright     workspace 9
+bindsym $super+parenright       workspace 10
 
-bindsym $super+Shift+slash		move container to workspace 1;  workspace 1
-bindsym $super+Shift+parenleft		move container to workspace 2;  workspace 2
-bindsym $super+Shift+bracketleft	move container to workspace 3;  workspace 3
-bindsym $super+Shift+braceleft		move container to workspace 4;  workspace 4
-bindsym $super+Shift+apostrophe		move container to workspace 5;  workspace 5
-bindsym $super+Shift+dollar		move container to workspace 6;  workspace 6
-bindsym $super+Shift+exclam		move container to workspace 7;  workspace 7
-bindsym $super+Shift+braceright		move container to workspace 8;  workspace 8
-bindsym $super+Shift+bracketright	move container to workspace 9;  workspace 9
-bindsym $super+Shift+parenright		move container to workspace 10; workspace 10
+bindsym $super+Shift+slash              move container to workspace 1;  workspace 1
+bindsym $super+Shift+parenleft          move container to workspace 2;  workspace 2
+bindsym $super+Shift+bracketleft        move container to workspace 3;  workspace 3
+bindsym $super+Shift+braceleft          move container to workspace 4;  workspace 4
+bindsym $super+Shift+apostrophe         move container to workspace 5;  workspace 5
+bindsym $super+Shift+dollar             move container to workspace 6;  workspace 6
+bindsym $super+Shift+exclam             move container to workspace 7;  workspace 7
+bindsym $super+Shift+braceright         move container to workspace 8;  workspace 8
+bindsym $super+Shift+bracketright       move container to workspace 9;  workspace 9
+bindsym $super+Shift+parenright         move container to workspace 10; workspace 10
 
 bindsym --whole-window $super+button4 workspace prev
 bindsym --whole-window $super+button5 workspace next
@@ -147,14 +147,14 @@ bindsym $super+Page_Down exec --no-startup-id blueman-manager
 for_window [class="steam_app_1551360"] floating enable
 
 for_window [class="Pavucontrol"] \
-	floating enable, \
-	resize set width 1000 px height 600 px, \
-	move position center
+        floating enable, \
+        resize set width 1000 px height 600 px, \
+        move position center
 
 for_window [title="Save.*"] \
-	floating enable, \
-	move position center, \
-	resize set width 1000 px height 700 px
+        floating enable, \
+        move position center, \
+        resize set width 1000 px height 700 px
 
 assign [title="Minecraft.*"] 4
 for_window [title="Minecraft.*"] border none
@@ -173,27 +173,3 @@ workspace 7   output HDMI-1-0
 workspace 8   output HDMI-1-0
 workspace 9   output HDMI-1-0
 workspace 10  output eDP-1
-
-# bar {
-# 	status_command /home/fuyu147/.config/i3status/i3status_wrapper.py
-#
-# 	position bottom
-# 	mode dock
-#
-# 	tray_output primary
-# 	tray_padding 4
-#
-# 	separator_symbol " │ "
-#
-# 	colors {
-# 		background #191724
-# 		statusline #e0def4
-# 		separator  #26233a
-#
-# 		focused_workspace  #31748f #31748f #e0def4
-# 		active_workspace   #1f1d2e #1f1d2e #e0def4
-# 		inactive_workspace #191724 #191724 #908caa
-# 		urgent_workspace   #26233a #eb6f92 #e0def4
-# 		binding_mode       #26233a #eb6f92 #e0def4
-# 	}
-# }
