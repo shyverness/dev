@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=CPU Simulator
+Exec=env "WINEPREFIX=/home/hiver/.wine" wine "C:\\\\ProgramData\\\\Microsoft\\\\Windows\\\\Start Menu\\\\Programs\\\\CPU-OS Simulator\\\\CPU Simulator.lnk"
+Type=Application
+StartupNotify=true
+Path=/home/hiver/.wine/drive_c/Program Files (x86)/CPU-OS Simulator
+Icon=089E_CPUSimulator.0
+StartupWMClass=cpusimulator.exe

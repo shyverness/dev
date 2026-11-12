@@ -34,14 +34,17 @@ input type:touchpad {
 	dwt enabled
 	middle_emulation enabled
 	tap enabled
+
+	# disable the touchpad
+	events disabled
 }
 
 seat * {
 	hide_cursor 15000
 }
 
-default_border pixel 2
-default_floating_border normal
+default_border          pixel 2
+default_floating_border pixel 2
 smart_gaps off
 gaps inner 0
 gaps outer 0
