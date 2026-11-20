@@ -21,7 +21,7 @@ cursor = "#EC5D2A"
 # normal = { family = "new computer modern mono 10" }
 # normal = { family = "Monocraft" }
 normal = { family = "iosevkaterm" }
-size = 16
+size = 20
 
 [keyboard]
 bindings = [

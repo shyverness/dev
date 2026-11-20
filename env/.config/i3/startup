@@ -9,7 +9,7 @@ dunst &
 nm-applet &
 udiskie --tray &
 mpd --no-daemon ~/.config/mpd.conf &
-protonmail-bridge &
+# protonmail-bridge &
 
 
 unclutter --timeout 15 &

@@ -1,8 +1,8 @@
 set               $mod Mod4
 floating_modifier $mod
 
-output eDP-1    res 2560x1600@60Hz  pos 1920  0 scale 1.6 allow_tearing yes
-# output eDP-1    disable
+output eDP-1    disable
+# output eDP-1    res 2560x1600@60Hz  pos 1920  0 scale 1.6 allow_tearing yes
 output HDMI-A-1 res 1920x1080@120Hz pos 0     0 scale 1   allow_tearing yes
 
 # output eDP-1    res 2560x1600@60Hz  pos 0  0 scale 1.6 allow_tearing yes
@@ -44,7 +44,6 @@ seat * {
 }
 
 default_border          pixel 2
-default_floating_border pixel 2
 smart_gaps off
 gaps inner 0
 gaps outer 0
@@ -61,8 +60,9 @@ bindsym $mod+Shift+q		reload
 bindsym $mod+Escape		exec hyprlock
 bindsym $mod+F8			exit
 bindsym $mod+F9			exec ~/.config/sway/logout.sh
-bindsym $mod+v			floating toggle, border normal
+bindsym $mod+v			floating toggle
 bindsym $mod+space		focus mode_toggle
+bindsym $mod+Shift+space	sticky toggle
 bindsym $mod+f			fullscreen
 bindsym $mod+b			exec ~/.config/waybar/waybar.sh
 bindsym $mod+F12		exec dunstctl history-pop
@@ -75,7 +75,7 @@ bindsym $mod+u			split vertical
 # Apps/Scripts
 bindsym $mod+Ctrl+v		exec cliphist list | rofi -dmenu -p "Clipboard" | cliphist decode | wl-copy
 bindsym $mod+q			exec helium-browser
-bindsym $mod+Return		exec foot
+bindsym $mod+Return		exec alacritty
 bindsym $mod+Shift+Return	exec kitty
 bindsym $mod+w			exec librewolf
 bindsym $mod+Shift+w		exec thunderbird
@@ -91,6 +91,7 @@ bindsym $mod+Shift+c		exec hyprpicker -a
 bindsym $mod+period		exec rofi -modi emoji -show emoji -no-fixed-num-lines
 bindsym $mod+minus		exec ~/Desktop/dev/scripts/tts.sh
 bindsym $mod+d			exec wtype "$(date '+%Y.%m.%d')"
+bindsym $mod+Shift+d		exec wtype "$(date '+%Y/%m/%d')"
 bindsym $mod+k 			exec ~/.config/sway/scripts/rmpc-scratchpad.sh
 bindsym $mod+eacute		exec ~/Desktop/dev/scripts/wpdf.sh
 
@@ -119,7 +120,7 @@ bindsym $mod+Shift+dollar	move container to workspace 6;  workspace 6
 bindsym $mod+Shift+exclam	move container to workspace 7;  workspace 7
 bindsym $mod+Shift+braceright	move container to workspace 8;  workspace 8
 bindsym $mod+Shift+bracketright	move container to workspace 9;  workspace 9
-bindsym $mod+Shift+parenright	move container to workspace 10; 0workspace 10
+bindsym $mod+Shift+parenright	move container to workspace 10; workspace 10
 
 bindsym --whole-window $mod+button4 workspace prev
 bindsym --whole-window $mod+button5 workspace next
@@ -199,7 +200,7 @@ assign [app_id="org.qbittorrent.qBittorrent"] 8
 assign [app_id="org.mozilla.Thunderbird"]     9
 assign [app_id="vesktop"]                     9
 
-for_window [title="^Picture-in-Picture$"] move container to workspace number 10
+# for_window [title="^Picture-in-Picture$"] move container to workspace number 10
 
 # Workspace settings
 workspace 1   output HDMI-A-1

@@ -1,6 +1,7 @@
 # background = #000000
 
-# cursor-color = EC5D2A
+cursor-color = EC5D2A
+cursor-text  = FFFFFF
 
 
 # background-opacity = 0.95
@@ -22,7 +23,7 @@ gtk-tabs-location   = bottom
 gtk-wide-tabs       = false
 gtk-toolbar-style   = raised
 
-shell-integration-features = no-cursor
+# shell-integration-features = no-cursor
 
 bell-features = no-title
 

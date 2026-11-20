@@ -24,19 +24,6 @@ bufferline.setup {
 	}
 }
 
-vim.keymap.set("n", "<C-n>", function()
-	bufferline.go_to(1, true)
-end, { silent = true })
-vim.keymap.set("n", "<C-e>", function()
-	bufferline.go_to(2, true)
-end, { silent = true })
-vim.keymap.set("n", "<C-i>", function()
-	bufferline.go_to(3, true)
-end, { silent = true })
-vim.keymap.set("n", "<C-o>", function()
-	bufferline.go_to(4, true)
-end, { silent = true })
-
 vim.keymap.set('n', '<A-.>', function()
 	vim.cmd [[BufferLineMoveNext]]
 end, { desc = 'Move buffer right' })
@@ -52,5 +39,5 @@ vim.keymap.set("n", "<A-k>", function()
 	vim.cmd [[BufferLineCyclePrev]]
 end)
 vim.keymap.set("n", "<C-c>", function()
-	vim.cmd [[bwipeout!]]
+	vim.cmd [[bdelete!]]
 end, { silent = true })

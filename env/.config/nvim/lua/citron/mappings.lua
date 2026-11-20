@@ -77,57 +77,40 @@ local function fzf_aliases()
 	})
 end
 
-local mappings = {
-	{ "n", "<leader>ma", fzf_aliases },
-	{ "n", "<Enter>",    "<nop>" },
-	{ "t", "<C-q>",      [[<C-\><C-n>]] },
-	{ "n", "<C-t>",      fzf_chdir },
-	{ "n", "ç",          "<CMD>Oil<CR>",    { desc = "Open root directory" } },
-	{ "n", "<leader>ç",  "<CMD>Oil .<CR>",  { desc = "Open root directory" } },
-	{ "n", "<ESC>",      "<CMD>noh<CR>" },
-	{ "n", "<leader>pf", ":FilesNoPDF<CR>", { desc = "Open fzf (no PDFs)" } },
-	{ "n", "<C-f>",      ":FilesNoPDF<CR>", { desc = "Open fzf (no PDFs)" } },
-	{ "n", "<leader>sk", ":make<CR>",       { desc = "Call make in split" } },
-	{ 'n', '<C-k><C-v>', function()
-		vim.cmd('split | term')
-		vim.cmd('startinsert')
-	end },
-	{ 'n', '<C-k><C-t>', function()
-		vim.cmd('term')
-		vim.cmd('startinsert')
-	end },
-	{ 'n', '<C-k><C-n>', function()
-		vim.cmd('enew')
-	end },
-	{ "n",               "<leader>sa", "ggVG" },
-	{ "n",               "<leader>pl", "<CMD>lua MiniFiles.open()<CR>" },
-	{ "n",               "<leader>pu", "<CMD>lua require'fzf-lua'.lsp_document_symbols()<CR>" },
-	{ "n",               "<leader>py", "<CMD>lua require'fzf-lua'.lsp_workspace_symbols()<CR>" },
-	{ "n",               "<leader>gf", "<C-w>gF" },
-	{ "n",               "<A-s>",      ":m +1<CR>" },
-	{ "n",               "<A-r>",      ":m -2<CR>" },
-	{ "v",               "<A-s>",      ":m '>+1<CR>gv" },
-	{ "v",               "<A-r>",      ":m '<-2<CR>gv" },
-	{ { "n", "v" },      "!",          ":!" },
-	{ { "n", "v" },      "<leader>w",  "<CMD>write<CR>" },
-	{ { "n", "v", "x" }, "-",          "0" },
-	{ { "n", "v", "x" }, ";",          ":" },
-	{ { "n", "v", "x" }, ":",          ";" },
-	{ { 'n', 'v', 'x' }, 'j',          'gj' },
-	{ { 'n', 'v', 'x' }, 'k',          'gk' },
-	{ { 'n', 'v', 'x' }, 'R',          'gR' },
-	{ { 'n', 'v', 'x' }, '<leader>cz', ':center<CR>' },
+vim.keymap.set("n", "<leader>ma", fzf_aliases)
+vim.keymap.set("n", "<Enter>",    "<nop>")
+vim.keymap.set("t", "<C-q>",      [[<C-\><C-n>]])
+vim.keymap.set("n", "<C-t>",      fzf_chdir)
+vim.keymap.set("n", "ç",          "<CMD>Oil<CR>",    { desc = "Open current directory" })
+vim.keymap.set("n", "<leader>ç",  "<CMD>Oil .<CR>",  { desc = "Open root directory" })
+vim.keymap.set("n", "<ESC>",      "<CMD>noh<CR>")
+vim.keymap.set("n", "<leader>pf", ":FilesNoPDF<CR>", { desc = "Open fzf (no PDFs)" })
+vim.keymap.set("n", "<C-f>",      ":FilesNoPDF<CR>", { desc = "Open fzf (no PDFs)" })
+vim.keymap.set("n", "<leader>sk", ":make<CR>",       { desc = "Call :make" })
+vim.keymap.set('n', '<C-k><C-v>', function()
+	vim.cmd('split | term')
+	vim.cmd('startinsert')
+end)
+vim.keymap.set('n', '<C-k><C-t>', function()
+	vim.cmd('term')
+	vim.cmd('startinsert')
+end)
+vim.keymap.set('n',               '<C-k><C-n>', function() vim.cmd('enew') end)
+vim.keymap.set("n",               "<A-s>",      ":m +1<CR>")
+vim.keymap.set("n",               "<A-r>",      ":m -2<CR>")
+vim.keymap.set("v",               "<A-s>",      ":m '>+1<CR>gv")
+vim.keymap.set("v",               "<A-r>",      ":m '<-2<CR>gv")
+vim.keymap.set({ "n", "v" },      "!",          ":!")
+vim.keymap.set({ "n", "v" },      "<leader>w",  "<CMD>write<CR>")
+vim.keymap.set({ "n", "v", "x" }, "-",          "0")
+vim.keymap.set({ "n", "v", "x" }, ";",          ":")
+vim.keymap.set({ "n", "v", "x" }, ":",          ";")
+vim.keymap.set({ 'n', 'v', 'x' }, 'j',          'gj')
+vim.keymap.set({ 'n', 'v', 'x' }, 'k',          'gk')
+vim.keymap.set({ 'n', 'v', 'x' }, 'R',          'gR')
+vim.keymap.set({ 'n', 'v', 'x' }, '<leader>cz', ':center<CR>')
 
-	{ "n",               "<leader>cd", fzf_chdir,                                              { desc = "Change directory with skim" } },
+vim.keymap.set("n", "<leader>y", function()
+	vim.fn.jobstart({ pdfReader, vim.fn.expand("%:p:r") .. ".pdf" }, { detach = true })
+end, { desc = "Open PDF" })
 
-	{ "n", "<leader>y", function()
-		local pdf = vim.fn.expand("%:p:r") .. ".pdf"
-
-		vim.fn.jobstart({ pdfReader, pdf }, { detach = true })
-	end, { desc = "Open PDF" } },
-}
-
-
-for _, value in ipairs(mappings) do
-	vim.keymap.set(value[1], value[2], value[3], value[4])
-end

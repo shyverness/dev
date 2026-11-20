@@ -1,17 +1,20 @@
 set clipboard+=unnamedplus
-set nu
+" set nu
 
 set hlsearch
 set incsearch
 
-" set cc=72,80,90,110
+set cc=72,80,90,110
 
 set list
 let &listchars='tab:> ,trail:*,space:·,nbsp:⍽'
 
-set scroll=0
+set scrolloff=10
 
-set wildignorecase
+set ignorecase
+
+colorscheme retrobox
+set background=dark
 
 nnoremap ! :!
 vnoremap ! :!

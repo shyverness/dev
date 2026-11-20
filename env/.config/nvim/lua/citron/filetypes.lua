@@ -11,22 +11,11 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "typst" },
 	callback = function()
-		vim.keymap.set("n", "<leader>h", function()
-			local file = vim.fn.expand("%:p")
-			vim.system({ "typst", "c", file })
-		end, { buffer = true, desc = "Compile Typst file" })
+		vim.opt.makeprg = "typst c %"
 	end
 })
 
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "python" },
-	callback = function()
-		vim.keymap.set("n", "<leader>h", ":w<CR>:!python3 %<CR>",
-			{ buffer = true, desc = "Run Python file" })
-	end
-})
-
--- force to use *my* settings over whatever the Lsp thinks is best.
+-- force to use *my* settings over whoever thinks is best.
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
 		vim.opt_local.tabstop     = 8

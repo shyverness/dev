@@ -5,25 +5,53 @@ set clipboard=unnamedplus
 let g:netrw_browse_split = 0
 let g:netrw_banner = 1
 let g:netrw_winsize = 25
+let g:vimwiki_smartCR = 0
+let g:vimwiki_key_mappings = { 'all_maps': 0 }
+let g:UltiSnipsJumpForwardTrigger="<c-x>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
+augroup filetype_keymaps
+  autocmd!
+  autocmd FileType vimwiki nnoremap <buffer> <leader>l :VimwikiFollowLink<CR>
+  autocmd FileType vimwiki nnoremap <buffer> <leader>sl :VimwikiSplitLink<CR>
+  autocmd FileType vimwiki nnoremap <buffer> <leader>bl :VimwikiBacklinks<CR>
+augroup END
+
+set comments=""
 set cmdheight=1
-set guicursor=a:block-Cursor,i:ver30-iCursor,r-cr:hor20-Cursor
-set wildignorecase
+set conceallevel=0
 set encoding=utf-8
 set fileencoding=utf-8
+set formatoptions=tcroqn
+set guicursor=a:block-Cursor,i:ver30-iCursor,r-cr:hor20-Cursor
+set mouse=nv
 set switchbuf=usetab
+set wildignorecase
 
-colorscheme retrobox
-set background=light
-set termguicolors
+set ttimeout
+set ttimeoutlen=25 " sets the timeout after pressing escape and
+                      " exiting visual mode
+
+filetype plugin on " this is just a pain to deal with some filetypes
+                   " especially with the indents, so not using it for now
 syntax on
+set termguicolors
+
+set background=dark
+colorscheme gruber-darker
+
+" set background=light
+" colorscheme zellner
+
+highlight Cursor guifg=#000000 guibg=#ec5d2a
 
 set number
 " set relativenumber
 
 set tabstop=8
 set shiftwidth=8
-" set nosmartindent
+set nosmartindent
+set noautoindent
 set noexpandtab
 
 set nowrap
@@ -35,13 +63,13 @@ set nobackup
 set hlsearch
 set incsearch
 
-set scrolloff=3
+set scrolloff=10
 set isfname+=@-@
 set signcolumn=no
 set foldmethod=marker
 set foldmarker={,}
 set foldlevelstart=99
-" set cursorline
+set cursorline
 set colorcolumn=72,80,120,180
 set textwidth=72
 
@@ -54,6 +82,11 @@ set ignorecase
 set smartcase
 set nospell
 set spelllang=en,fr,cjk
+
+augroup TrimTrailingWhitespace
+	autocmd!
+	autocmd BufWritePre * %s/\s\+$//e
+augroup END
 
 nnoremap <Enter> <Nop>
 nnoremap <ESC> <Cmd>noh<CR>
@@ -83,8 +116,32 @@ nnoremap <leader>cz :center<CR>
 vnoremap <leader>cz :center<CR>
 xnoremap <leader>cz :center<CR>
 
+nnoremap <leader>sk :make<CR>
+
 nnoremap ç :Ex<CR>
 
-inoreabbrev <expr> ;t strftime('%Y.%m.%d')
-inoreabbrev <expr> ;h strftime('%H:%M')
+nnoremap <leader>y :call OpenPDF()<CR>
 
+function! OpenPDF()
+  let l:pdf = expand('%:p:r') . '.pdf'
+  call job_start(['zathura', l:pdf], {'stoponexit': ''})
+ endfunction
+
+
+" augroup filetype_keymaps
+" 	autocmd!
+" 	autocmd FileType c packadd coc.nvim
+" 	autocmd FileType c let g:coc_global_extensions = ['coc-clangd']
+" 	autocmd FileType c inoremap <silent><expr> <TAB>
+" 		\ coc#pum#visible() ? coc#pum#next(1) :
+" 		\ CheckBackspace() ? "\<Tab>" :
+" 		\ coc#refresh()
+" 	autocmd FileType c inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+" 	autocmd FileType c inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" 	autocmd FileType c nnoremap K <Plug>(coc-definition)
+" augroup END
+"
+" function! CheckBackspace() abort
+" 		let col = col('.') - 1
+" 		return !col || getline('.')[col - 1] =~# '\s'
+" endfunction

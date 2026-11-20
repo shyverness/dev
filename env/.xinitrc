@@ -30,4 +30,4 @@ sleep 1
 
 nitrogen --restore
 
-exec dbus-run-session dwm
+exec dbus-run-session i3wm
