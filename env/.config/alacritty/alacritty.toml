@@ -20,7 +20,8 @@ cursor = "#EC5D2A"
 # normal = { family = "courier prime code" }
 # normal = { family = "new computer modern mono 10" }
 # normal = { family = "Monocraft" }
-normal = { family = "iosevkaterm" }
+# normal = { family = "iosevkaterm" }
+normal = { family = "courier prime" }
 size = 20
 
 [keyboard]
