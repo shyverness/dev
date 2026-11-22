@@ -21,7 +21,7 @@ dbus-update-activation-environment --systemd --all &
 dbus-update-activation-environment --all &
 # gnome-keyring-daemon --start --components=secrets &
 
-wlsunset -S 9:00 -s 21:00 &
+# wlsunset -S 9:00 -s 21:00 &
 
 # /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 

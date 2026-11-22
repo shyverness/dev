@@ -3,12 +3,10 @@ let mapleader = " "
 set clipboard=unnamedplus
 
 let g:netrw_browse_split = 0
-let g:netrw_banner = 1
+let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:vimwiki_smartCR = 0
 let g:vimwiki_key_mappings = { 'all_maps': 0 }
-let g:UltiSnipsJumpForwardTrigger="<c-x>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 
 augroup filetype_keymaps
   autocmd!
@@ -33,17 +31,17 @@ set ttimeoutlen=25 " sets the timeout after pressing escape and
                       " exiting visual mode
 
 filetype plugin on " this is just a pain to deal with some filetypes
-                   " especially with the indents, so not using it for now
-syntax on
-set termguicolors
+"                  " especially with the indents, so not using it for now
+" syntax on
 
+set termguicolors
 set background=dark
 colorscheme gruber-darker
 
 " set background=light
 " colorscheme zellner
 
-highlight Cursor guifg=#000000 guibg=#ec5d2a
+" highlight Cursor guifg=#000000 guibg=#ec5d2a
 
 set number
 " set relativenumber
@@ -63,7 +61,7 @@ set nobackup
 set hlsearch
 set incsearch
 
-set scrolloff=10
+set scrolloff=3
 set isfname+=@-@
 set signcolumn=no
 set foldmethod=marker
@@ -125,23 +123,4 @@ nnoremap <leader>y :call OpenPDF()<CR>
 function! OpenPDF()
   let l:pdf = expand('%:p:r') . '.pdf'
   call job_start(['zathura', l:pdf], {'stoponexit': ''})
- endfunction
-
-
-" augroup filetype_keymaps
-" 	autocmd!
-" 	autocmd FileType c packadd coc.nvim
-" 	autocmd FileType c let g:coc_global_extensions = ['coc-clangd']
-" 	autocmd FileType c inoremap <silent><expr> <TAB>
-" 		\ coc#pum#visible() ? coc#pum#next(1) :
-" 		\ CheckBackspace() ? "\<Tab>" :
-" 		\ coc#refresh()
-" 	autocmd FileType c inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-" 	autocmd FileType c inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-" 	autocmd FileType c nnoremap K <Plug>(coc-definition)
-" augroup END
-"
-" function! CheckBackspace() abort
-" 		let col = col('.') - 1
-" 		return !col || getline('.')[col - 1] =~# '\s'
-" endfunction
+endfunction

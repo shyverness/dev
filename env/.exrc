@@ -13,8 +13,8 @@ set scrolloff=10
 
 set ignorecase
 
-colorscheme retrobox
-set background=dark
+colorscheme zellner
+set background=light
 
 nnoremap ! :!
 vnoremap ! :!

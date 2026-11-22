@@ -12,8 +12,9 @@ vim.pack.add {
 	{ src = "https://github.com/mason-org/mason.nvim" },
 	{ src = "https://github.com/hrsh7th/cmp-cmdline", },
 	{ src = "https://github.com/hrsh7th/nvim-cmp", },
-	{ src = 'https://github.com/mrcjkb/haskell-tools.nvim',         version = vim.version.range('^9') },
 }
+
+require("mason").setup({})
 
 local cmp = require "cmp"
 cmp.setup({
@@ -44,22 +45,22 @@ cmp.setup({
 
 
 vim.lsp.enable({
-	"basedpyright",
-	"bashls",
+	-- "basedpyright",
+	-- "bashls",
 	"clangd",
-	"csharp_ls",
-	"css-lsp",
+	-- "csharp_ls",
+	-- "css-lsp",
 	"gopls",
-	"haskell-language-server",
-	"ionide",
+	-- "haskell-language-server",
+	-- "ionide",
 	"lua_ls",
-	"ocamllsp",
+	-- "ocamllsp",
 	"ols",
-	"rust-analyzer",
-	"texlab",
+	-- "rust-analyzer",
+	-- "texlab",
 	"tinymist",
-	"ts_ls",
-	"zls",
+	-- "ts_ls",
+	-- "zls",
 })
 
 vim.diagnostic.config({

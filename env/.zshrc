@@ -47,12 +47,12 @@ PROMPT='[%~] ${vcs_info_msg_0_}
 bindkey -s ^t "^utmux attach-session\n"
 
 
-vfz-widget() {
-  BUFFER='vfz ~'
-  zle accept-line
-}
-zle -N vfz-widget
-bindkey '^F' vfz-widget
+# vfz-widget() {
+#   BUFFER='vfz ~'
+#   zle accept-line
+# }
+# zle -N vfz-widget
+# bindkey '^F' vfz-widget
 
 
 zstyle ':completion:*:(vim|nvim):*' ignored-patterns '*.pdf'

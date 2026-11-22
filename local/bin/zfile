@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+file=$1
+baseName=$(basename "$file")
+name="${baseName%.*}"
+dir=$(dirname "$1")
+
+zathura "$dir/$name.pdf" >/dev/null 2>&1 &
+disown

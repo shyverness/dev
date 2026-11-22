@@ -28,8 +28,6 @@ vim.pack.add {
 	{ src = "https://github.com/nvim-mini/mini.extra" },
 }
 
--- require("mason").setup({})
-
 require("luasnip").setup({ enable_autosnippets = true })
 vim.keymap.set({ "i", "s" }, "<C-x>", function() require("luasnip").jump(1) end, { silent = true })
 require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets/" })

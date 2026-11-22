@@ -1,7 +1,7 @@
 require "citron.autocmds"
 require "citron.buffers"
 require "citron.colors"
--- require "citron.lsp"
+require "citron.lsp"
 require "citron.mappings"
 require "citron.plugins"
 require "citron.set-colors"

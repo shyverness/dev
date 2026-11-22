@@ -16,6 +16,26 @@
       "rev": "5c9d924a4c75c130a1c812ee3e240d78a92d2c3a",
       "src": "https://github.com/Aejkatappaja/cendre"
     },
+    "cmp-buffer": {
+      "rev": "b74fab3656eea9de20a9b8116afa3cfc4ec09657",
+      "src": "https://github.com/hrsh7th/cmp-buffer"
+    },
+    "cmp-cmdline": {
+      "rev": "d126061b624e0af6c3a556428712dd4d4194ec6d",
+      "src": "https://github.com/hrsh7th/cmp-cmdline"
+    },
+    "cmp-nvim-lsp": {
+      "rev": "cd4ee08a988deb47ac3726f418fb27fe1a95729d",
+      "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
+    },
+    "cmp-path": {
+      "rev": "c642487086dbd9a93160e1679a1327be111cbc25",
+      "src": "https://github.com/hrsh7th/cmp-path"
+    },
+    "cmp_luasnip": {
+      "rev": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90",
+      "src": "https://github.com/saadparwaiz1/cmp_luasnip"
+    },
     "fzf": {
       "rev": "4499615fe9c06c0651aa5650e5d0d0a5face99a8",
       "src": "https://github.com/junegunn/fzf"
@@ -32,6 +52,19 @@
       "rev": "35cb97959ef01f7193c94c404c13ddb3d4346654",
       "src": "https://github.com/blazkowolf/gruber-darker.nvim"
     },
+    "haskell-tools.nvim": {
+      "rev": "2493ed5ac22bff87b10b5fc4c7fdbf0f9ea180b2",
+      "src": "https://github.com/mrcjkb/haskell-tools.nvim",
+      "version": "9.0.0 - 10.0.0"
+    },
+    "mason-lspconfig.nvim": {
+      "rev": "761d376b5fbe6b21f659432ffadc1205c660176c",
+      "src": "https://github.com/williamboman/mason-lspconfig.nvim"
+    },
+    "mason.nvim": {
+      "rev": "2a6940af80375532e5e9e7c1f2fc6319a1b7a69d",
+      "src": "https://github.com/mason-org/mason.nvim"
+    },
     "mini.extra": {
       "rev": "8ed483ebaea4610c4b5e7b0fcc28854225946ddd",
       "src": "https://github.com/nvim-mini/mini.extra"
@@ -43,6 +76,10 @@
     "mini.trailspace": {
       "rev": "2b58478e717a8ea016d42f611cf7fbcf7b7c0037",
       "src": "https://github.com/nvim-mini/mini.trailspace"
+    },
+    "nvim-cmp": {
+      "rev": "fe29aba4117227a6df637bc41e4b4fb4e98864a0",
+      "src": "https://github.com/hrsh7th/nvim-cmp"
     },
     "oil.nvim": {
       "rev": "d3733d933833a0e59b813ecec99341527adf0c28",
