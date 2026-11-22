@@ -35,6 +35,7 @@ filetype plugin on " this is just a pain to deal with some filetypes
 " syntax on
 
 set termguicolors
+
 set background=dark
 colorscheme gruber-darker
 
@@ -49,8 +50,8 @@ set number
 set tabstop=8
 set shiftwidth=8
 set nosmartindent
-set noautoindent
 set noexpandtab
+set autoindent
 
 set nowrap
 let &showbreak = '\-'

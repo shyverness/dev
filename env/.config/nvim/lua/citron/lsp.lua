@@ -60,7 +60,7 @@ vim.lsp.enable({
 	-- "texlab",
 	"tinymist",
 	-- "ts_ls",
-	-- "zls",
+	"zls",
 })
 
 vim.diagnostic.config({
