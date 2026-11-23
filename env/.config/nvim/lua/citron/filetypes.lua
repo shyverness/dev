@@ -2,7 +2,7 @@
 
 -- extended lines
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "cs", "csharp", "rust", "html", "css", "json", "jsonc", "fs", "fsharp" },
+	pattern = { "html", "css", "java" },
 	callback = function()
 		vim.opt_local.textwidth = 120
 	end,

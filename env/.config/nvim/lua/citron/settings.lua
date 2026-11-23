@@ -17,11 +17,6 @@ vim.g.netrw_winsize      = 25
 vim.opt.cmdheight        = 1
 
 vim.opt.winborder        = "single"
-vim.opt.guicursor        = {
-	"a:block-Cursor",
-	"i:ver30-iCursor",
-	"r-cr:hor20-Cursor"
-}
 
 vim.opt.wildignorecase   = true
 

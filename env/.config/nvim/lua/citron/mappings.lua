@@ -21,30 +21,30 @@ vim.cmd([[
     \ )
 ]])
 
-local function fzf_chdir()
-	local currentDir = vim.fn.getcwd()
-	local sources = {
-		"fd . " .. currentDir .. " --type d --follow --exclude '.*' --max-depth 2",
-		-- "fd . ~/Desktop/ --type d --follow --exclude '.*' --max-depth 7",
-		-- "fd . ~/.config --type d --follow --max-depth 2",
-	}
-	if vim.fn.isdirectory("/run/media/fuyu147/VOLUME_NOIR/shared-data/") == 1 then
-		table.insert(sources, "fd . /run/media/fuyu147/VOLUME_NOIR/shared-data/ --type d --follow --max-depth 3")
-	end
-	vim.fn['fzf#run']({
-		source = table.concat(sources, " ; "),
-		sink = function(selected)
-			if selected and selected ~= "" then
-				vim.fn.chdir(selected)
-			end
-		end,
-		options = {
-			"--prompt", currentDir .. " > ",
-			"--preview", "tree -L 2 {}",
-		},
-		window = vim.g.fzf_layout.window
-	})
-end
+-- local function fzf_chdir()
+-- 	local currentDir = vim.fn.getcwd()
+-- 	local sources = {
+-- 		"fd . " .. currentDir .. " --type d --follow --exclude '.*' --max-depth 2",
+-- 		-- "fd . ~/Desktop/ --type d --follow --exclude '.*' --max-depth 7",
+-- 		-- "fd . ~/.config --type d --follow --max-depth 2",
+-- 	}
+-- 	if vim.fn.isdirectory("/run/media/fuyu147/VOLUME_NOIR/shared-data/") == 1 then
+-- 		table.insert(sources, "fd . /run/media/fuyu147/VOLUME_NOIR/shared-data/ --type d --follow --max-depth 3")
+-- 	end
+-- 	vim.fn['fzf#run']({
+-- 		source = table.concat(sources, " ; "),
+-- 		sink = function(selected)
+-- 			if selected and selected ~= "" then
+-- 				vim.fn.chdir(selected)
+-- 			end
+-- 		end,
+-- 		options = {
+-- 			"--prompt", currentDir .. " > ",
+-- 			"--preview", "tree -L 2 {}",
+-- 		},
+-- 		window = vim.g.fzf_layout.window
+-- 	})
+-- end
 
 local file        = "/home/hiver/.config/neomutt/aliases"
 local magicNumber = 20
@@ -80,7 +80,7 @@ end
 vim.keymap.set("n", "<leader>ma", fzf_aliases)
 vim.keymap.set("n", "<Enter>",    "<nop>")
 vim.keymap.set("t", "<C-q>",      [[<C-\><C-n>]])
-vim.keymap.set("n", "<C-t>",      fzf_chdir)
+-- vim.keymap.set("n", "<C-t>",      fzf_chdir)
 vim.keymap.set("n", "ç",          "<CMD>Oil<CR>",    { desc = "Open current directory" })
 vim.keymap.set("n", "<leader>ç",  "<CMD>Oil .<CR>",  { desc = "Open root directory" })
 vim.keymap.set("n", "<ESC>",      "<CMD>noh<CR>")

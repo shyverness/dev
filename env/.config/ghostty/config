@@ -11,10 +11,9 @@ background-blur    = false
 confirm-close-surface = false
 
 # font-family  = "newcomputermodernmono10"
-# font-family  = "courier prime"
+font-family  = "courier prime"
 # font-family  = "comic code"
-font-family  = "iosevkaterm"
-font-family  = "Zen Maru Gothic"
+# font-family  = "iosevkaterm"
 font-size    = 20
 font-feature = -calt, -liga, -dlig
 
@@ -34,7 +33,7 @@ window-padding-balance           = true
 window-padding-y                 = 0
 window-decoration                = server
 
-adjust-cursor-thickness = 3
+adjust-cursor-thickness = 1
 
 keybind = ctrl+)=reset_font_size
 keybind = ctrl+]=goto_split:previous

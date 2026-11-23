@@ -7,6 +7,8 @@ let g:netrw_banner = 0
 let g:netrw_winsize = 25
 let g:vimwiki_smartCR = 0
 let g:vimwiki_key_mappings = { 'all_maps': 0 }
+let g:vimwiki_key_mappings = { 'all_maps': 0 }
+" let g:vimwiki_syntax = 'markdown'
 
 augroup filetype_keymaps
   autocmd!
@@ -52,6 +54,14 @@ set shiftwidth=8
 set nosmartindent
 set noexpandtab
 set autoindent
+
+augroup filetype_settings
+  autocmd!
+  autocmd FileType text     set noautoindent
+  autocmd FileType mail     set noautoindent
+  autocmd FileType markdown set noautoindent
+augroup END
+
 
 set nowrap
 let &showbreak = '\-'

@@ -17,7 +17,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	callback = function()
 		vim.hl.hl_op({
 			higroup = 'IncSearch',
-			timeout = 120,
+			timeout = 60,
 		})
 	end,
 })
@@ -39,7 +39,3 @@ autocmd("BufReadCmd", {
 		vim.cmd("bdelete!")
 	end,
 })
-
--- に触発された：https://swnakamura.github.io/posts/vim-japanese-input/
---
--- InsertLeave時に時間の除隊を記録し、InsertEnter時にその状態に切り替える
