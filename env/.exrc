@@ -1,5 +1,7 @@
 set clipboard+=unnamedplus
-" set nu
+set nu
+
+set history=1000
 
 set hlsearch
 set incsearch
@@ -13,8 +15,11 @@ set scrolloff=10
 
 set ignorecase
 
-colorscheme zellner
-set background=light
+set ttimeout
+set ttimeoutlen=25
+
+colorscheme retrobox
+set background=dark
 
 nnoremap ! :!
 vnoremap ! :!

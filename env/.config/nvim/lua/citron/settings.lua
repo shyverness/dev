@@ -3,6 +3,8 @@
 _G.pdfReader             = "zathura"
 _G.webBrowser            = "firefox"
 
+-- vim.cmd("filetype plugin off")
+
 vim.opt.clipboard        = "unnamedplus"
 vim.o.termguicolors      = tr
 vim.opt.mouse            = "a"

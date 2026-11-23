@@ -57,9 +57,9 @@ set autoindent
 
 augroup filetype_settings
   autocmd!
-  autocmd FileType text     set noautoindent
-  autocmd FileType mail     set noautoindent
-  autocmd FileType markdown set noautoindent
+  autocmd FileType text    set noautoindent
+  autocmd FileType mail    set noautoindent
+  autocmd FileType vimwiki set noautoindent
 augroup END
 
 
