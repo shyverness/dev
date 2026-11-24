@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 
+hyprlock &
+
 # pipewire &
 # wireplumber &
 # pipewire-pulse &

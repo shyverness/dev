@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OpenFront
+Comment=Play this game on Steam
+Exec=steam steam://rungameid/3560670
+Icon=steam
+Terminal=false
+Type=Application
+Categories=Game;

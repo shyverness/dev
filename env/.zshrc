@@ -3,7 +3,7 @@ export ZSH="$HOME/.oh-my-zsh"
 export GPG_TTY=$(tty)
 
 export EDITOR="ed"
-export VISUAL="nvim"
+export VISUAL="vim"
 export MAKEFLAGS="-j12"
 export NPROCESSORS_CONF="12"
 
