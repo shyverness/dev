@@ -1,4 +1,3 @@
-alias rs="nvim"
 alias mutt="neomutt"
 
 alias ff="fastfetch"

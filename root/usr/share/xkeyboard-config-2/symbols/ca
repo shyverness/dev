@@ -43,10 +43,10 @@ xkb_symbols "basic" {
     key <AE04>  {[  braceleft,          4                                   ]};
     key <AE05>  {[  apostrophe,         5                                   ]};
     key <AE06>  {[  dollar,             6                                   ]};
-    key <AE07>  {[  exclam,             7                                   ]};
-    key <AE08>  {[  braceright,         8                                   ]};
-    key <AE09>  {[  bracketright,       9                                   ]};
-    key <AE10>  {[  parenright,         0                                   ]};
+    key <AE07>  {[  braceright,         7                                   ]};
+    key <AE08>  {[  bracketright,       8                                   ]};
+    key <AE09>  {[  parenright,         9                                   ]};
+    key <AE10>  {[  exclam,             0                                   ]};
     key <AE11>  {[  minus,              underscore                          ]};
     key <AE12>  {[  equal,              plus                                ]};
 

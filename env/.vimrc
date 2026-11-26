@@ -1,3 +1,6 @@
+filetype plugin off
+
+
 let mapleader = " "
 
 set clipboard=unnamedplus
@@ -8,13 +11,13 @@ let g:netrw_winsize = 25
 let g:vimwiki_smartCR = 0
 let g:vimwiki_key_mappings = { 'all_maps': 0 }
 let g:vimwiki_key_mappings = { 'all_maps': 0 }
-" let g:vimwiki_syntax = 'markdown'
 
 augroup filetype_keymaps
-  autocmd!
-  autocmd FileType vimwiki nnoremap <buffer> <leader>l :VimwikiFollowLink<CR>
-  autocmd FileType vimwiki nnoremap <buffer> <leader>sl :VimwikiSplitLink<CR>
-  autocmd FileType vimwiki nnoremap <buffer> <leader>bl :VimwikiBacklinks<CR>
+	autocmd!
+	autocmd FileType vimwiki source ~/.vim/pack/plugins/start/vimwiki/ftplugin/vimwiki.vim
+	autocmd FileType vimwiki nnoremap <buffer> <leader>l :VimwikiFollowLink<CR>
+	autocmd FileType vimwiki nnoremap <buffer> <leader>sl :VimwikiSplitLink<CR>
+	autocmd FileType vimwiki nnoremap <buffer> <leader>bl :VimwikiBacklinks<CR>
 augroup END
 
 set comments=""
@@ -29,12 +32,9 @@ set switchbuf=usetab
 set wildignorecase
 
 set ttimeout
-set ttimeoutlen=25 " sets the timeout after pressing escape and
-                      " exiting visual mode
+set ttimeoutlen=25
 
-filetype plugin on " this is just a pain to deal with some filetypes
-"                  " especially with the indents, so not using it for now
-" syntax on
+syntax on
 
 set termguicolors
 
@@ -103,9 +103,9 @@ nnoremap <leader>sa ggVG
 nnoremap ! :!
 vnoremap ! :!
 nnoremap <leader>w <Cmd>write<CR>
-nnoremap - 0
-vnoremap - 0
-xnoremap - 0
+" nnoremap ; 0
+" vnoremap ; 0
+" xnoremap ! 0
 nnoremap ; :
 vnoremap ; :
 xnoremap ; :
@@ -126,12 +126,14 @@ vnoremap <leader>cz :center<CR>
 xnoremap <leader>cz :center<CR>
 
 nnoremap <leader>sk :make<CR>
-
 nnoremap ç :Ex<CR>
-
 nnoremap <leader>y :call OpenPDF()<CR>
+
+inoremap ;t <C-r>=strftime('%Y.%m.%d')<CR>
+inoremap ;h <C-r>=strftime('%H:%M')<CR>
 
 function! OpenPDF()
   let l:pdf = expand('%:p:r') . '.pdf'
   call job_start(['zathura', l:pdf], {'stoponexit': ''})
 endfunction
+

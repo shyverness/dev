@@ -1,8 +1,8 @@
 set               $mod Mod4
 floating_modifier $mod
 
-output eDP-1    disable
-# output eDP-1    res 2560x1600@60Hz  pos 1920  0 scale 1.6 allow_tearing yes
+# output eDP-1    disable
+output eDP-1    res 2560x1600@60Hz  pos 1920  0 scale 1.6 allow_tearing yes
 output HDMI-A-1 res 1920x1080@120Hz pos 0     0 scale 1   allow_tearing yes
 
 # output eDP-1    res 2560x1600@60Hz  pos 0  0 scale 1.6 allow_tearing yes
@@ -36,7 +36,7 @@ input type:touchpad {
 	tap enabled
 
 	# disable the touchpad
-	events disabled
+	# events disabled
 }
 
 seat * {
@@ -200,7 +200,7 @@ assign [app_id="org.qbittorrent.qBittorrent"] 8
 assign [app_id="org.mozilla.Thunderbird"]     9
 assign [app_id="vesktop"]                     9
 
-# for_window [title="^Picture-in-Picture$"] move container to workspace number 10
+for_window [title="^Picture-in-Picture$"] move container to workspace number 10
 
 # Workspace settings
 workspace 1   output HDMI-A-1
