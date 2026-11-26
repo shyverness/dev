@@ -100,27 +100,27 @@ bindsym $mod+Tab	workspace back_and_forth
 bindsym Mod1+Tab	exec swayr switch-to-urgent-or-lru-window
 bindsym $mod+p		exec swayr switch-window
 
-bindsym $mod+slash		workspace 1
-bindsym $mod+parenleft		workspace 2
-bindsym $mod+bracketleft	workspace 3
-bindsym $mod+braceleft		workspace 4
-bindsym $mod+apostrophe		workspace 5
-bindsym $mod+dollar		workspace 6
-bindsym $mod+exclam		workspace 7
-bindsym $mod+braceright		workspace 8
-bindsym $mod+bracketright	workspace 9
-bindsym $mod+parenright		workspace 10
+bindsym $mod+slash		workspace  1
+bindsym $mod+parenleft		workspace  2
+bindsym $mod+bracketleft	workspace  3
+bindsym $mod+braceleft		workspace  4
+bindsym $mod+apostrophe		workspace  5
+bindsym $mod+dollar		workspace  6
+bindsym $mod+braceright		workspace  7
+bindsym $mod+bracketright	workspace  8
+bindsym $mod+parenright		workspace  9
+bindsym $mod+exclam		workspace 10
 
-bindsym $mod+Shift+slash	move container to workspace 1;  workspace 1
-bindsym $mod+Shift+parenleft	move container to workspace 2;  workspace 2
-bindsym $mod+Shift+bracketleft	move container to workspace 3;  workspace 3
-bindsym $mod+Shift+braceleft	move container to workspace 4;  workspace 4
-bindsym $mod+Shift+apostrophe	move container to workspace 5;  workspace 5
-bindsym $mod+Shift+dollar	move container to workspace 6;  workspace 6
-bindsym $mod+Shift+exclam	move container to workspace 7;  workspace 7
-bindsym $mod+Shift+braceright	move container to workspace 8;  workspace 8
-bindsym $mod+Shift+bracketright	move container to workspace 9;  workspace 9
-bindsym $mod+Shift+parenright	move container to workspace 10; workspace 10
+bindsym $mod+Shift+slash	move container to workspace  1; workspace  1
+bindsym $mod+Shift+parenleft	move container to workspace  2; workspace  2
+bindsym $mod+Shift+bracketleft	move container to workspace  3; workspace  3
+bindsym $mod+Shift+braceleft	move container to workspace  4; workspace  4
+bindsym $mod+Shift+apostrophe	move container to workspace  5; workspace  5
+bindsym $mod+Shift+dollar	move container to workspace  6; workspace  6
+bindsym $mod+Shift+braceright	move container to workspace  7; workspace  7
+bindsym $mod+Shift+bracketright	move container to workspace  8; workspace  8
+bindsym $mod+Shift+parenright	move container to workspace  9; workspace  9
+bindsym $mod+Shift+exclam	move container to workspace 10; workspace 10
 
 bindsym --whole-window $mod+button4 workspace prev
 bindsym --whole-window $mod+button5 workspace next

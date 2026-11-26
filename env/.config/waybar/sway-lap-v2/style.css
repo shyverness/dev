@@ -11,7 +11,7 @@
 }
 
 window#waybar {
-	color: orange;
+	color: #dcecff;
 	background: transparent;
 }
 
@@ -21,54 +21,54 @@ window#waybar {
 
 .modules-left {
 	border-radius: 0px;
-	background: black;
+	background: #101c2c;
 }
+
 .modules-right {
 	border-radius: 0px;
-	background: black;
+	background: #101c2c;
 }
 
 tooltip {
-	color: orange;
-	background: black;
+	color: #dcecff;
+	background: #101c2c;
 	text-shadow: none;
 }
 
 tooltip * {
-	color: orange;
+	color: #dcecff;
 	text-shadow: none;
 }
 
 #workspaces button {
-	color: orange;
-	background: black;
+	color: #b8d8f0;
+	background: #101c2c;
 }
 
 #workspaces button:hover {
-	color: pink;
-	border: 1px solid pink;
+	color: #ffffff;
+	border: 1px solid #8ed8e8;
 }
 
 #workspaces button.occupied {
-	background: #333333;
+	background: #263a50;
 }
 
 #workspaces button.focused {
-	color: tomato;
-	border: 1px solid tomato;
+	color: #a6efff;
+	border: 1px solid #a6efff;
 }
 
 #window {
-	color: black;
-	background: tomato;
+	color: #101c2c;
+	background: #a6efff;
 }
 
 #clock {
 	font-weight: 600;
-	color: tomato;
+	color: #a6efff;
 }
 
 #tray menu {
-	background-color: black;
+	background-color: #101c2c;
 }
-
