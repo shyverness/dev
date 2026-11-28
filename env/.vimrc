@@ -38,11 +38,11 @@ syntax on
 
 set termguicolors
 
-set background=dark
-colorscheme gruber-darker
+" set background=dark
+" colorscheme gruber-darker
 
-" set background=light
-" colorscheme zellner
+set background=light
+colorscheme catppuccin
 
 " highlight Cursor guifg=#000000 guibg=#ec5d2a
 

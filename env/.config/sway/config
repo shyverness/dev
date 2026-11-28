@@ -4,6 +4,7 @@ floating_modifier $mod
 # output eDP-1    disable
 output eDP-1    res 2560x1600@60Hz  pos 1920  0 scale 1.6 allow_tearing yes
 output HDMI-A-1 res 1920x1080@120Hz pos 0     0 scale 1   allow_tearing yes
+# transform 270
 
 # output eDP-1    res 2560x1600@60Hz  pos 0  0 scale 1.6 allow_tearing yes
 # output HDMI-A-1 res preferred       pos 0  0 scale 1   duplicate eDP-1
